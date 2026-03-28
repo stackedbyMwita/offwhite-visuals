@@ -1,0 +1,5 @@
+export { default as ClientLogosMarquee } from "./ClientLogosMarquee"
+export { default as HeroStats } from "./HeroStats"
+export { default as SectionEyebrow } from "./SectionEyebrow"
+export { default as SectionHeader } from "./SectionHeader"
+export { default as SkillsLogoMarquee } from "./SkillsLogoMarquee"

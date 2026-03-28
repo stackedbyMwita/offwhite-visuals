@@ -1,0 +1,56 @@
+import { IPricingPlan } from '@/types'
+
+export const pricingPlans: IPricingPlan[] = [
+  {
+    name: 'Starter',
+    price: 800,
+    period: 'project',
+    description: 'For individuals and small businesses getting started online.',
+    features: [
+      'Landing page design & development',
+      'Mobile responsive',
+      'Basic SEO setup',
+      'Contact form with WhatsApp integration',
+      '2 revision rounds',
+      '2 weeks delivery',
+    ],
+    highlighted: false,
+    cta: 'Get Started',
+  },
+  {
+    name: 'Growth',
+    price: 2500,
+    period: 'project',
+    description: 'For growing businesses that need a complete digital presence.',
+    features: [
+      'Full website (up to 8 pages)',
+      'Custom UI/UX design',
+      'CMS integration',
+      'SEO optimisation',
+      'Brand identity kit',
+      'Analytics setup',
+      '3 revision rounds',
+      '4 weeks delivery',
+    ],
+    highlighted: true,
+    cta: 'Most Popular',
+  },
+  {
+    name: 'Studio',
+    price: 6000,
+    period: 'project',
+    description: 'For companies that need a serious digital product built right.',
+    features: [
+      'Full-stack web application',
+      'Custom design system',
+      'Authentication & user accounts',
+      'Database architecture',
+      'API development',
+      'Deployment & DevOps',
+      'Post-launch support (30 days)',
+      'Unlimited revisions',
+    ],
+    highlighted: false,
+    cta: 'Let\'s Talk',
+  },
+]
