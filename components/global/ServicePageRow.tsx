@@ -15,7 +15,7 @@ export default function ServicePageRow({ service, index }: ServicePageRowProps) 
       className="group block"
     >
       <div
-        className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 py-12 md:py-16 border-b transition-all duration-300"
+        className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 py-12 md:py-16 transition-all duration-300"
         style={{ borderColor: 'oklch(0.97 0.005 196 / 0.07)' }}
       >
 
@@ -117,7 +117,7 @@ export default function ServicePageRow({ service, index }: ServicePageRowProps) 
         <div className="lg:col-span-3 flex flex-col gap-4 justify-between">
 
           {/* Image */}
-          <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden">
+          <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden">
             <Image
               src={service.heroImage}
               alt={service.title}
@@ -128,7 +128,7 @@ export default function ServicePageRow({ service, index }: ServicePageRowProps) 
             <div className="absolute inset-0 bg-black/35 group-hover:bg-black/15 transition-colors duration-500" />
 
             {/* Top cyan edge */}
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </div>
 
           {/* Arrow */}

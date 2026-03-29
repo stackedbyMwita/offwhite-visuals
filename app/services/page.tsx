@@ -43,13 +43,13 @@ export default function ServicesPage() {
       </PageHeader>
 
       {/* ── Services list ─────────────────────────────────── */}
-      <SectionWrapper variant="dark" id="services-list" className="flex flex-col">
-        <MaxWidthWrapper className="flex flex-col gap-0 pb-28">
-          {services.map((service, i) => (
-            <ServicePageRow key={service.slug} service={service} index={i} />
-          ))}
+      {services.map((service, i) => (
+        <SectionWrapper variant="dark" id="services-list" className="flex flex-col" key={service.slug}>
+        <MaxWidthWrapper className="">
+            <ServicePageRow service={service} index={i} />
         </MaxWidthWrapper>
       </SectionWrapper>
+      ))}
 
       {/* ── CTA banner ────────────────────────────────────── */}
       <SectionWrapper variant="dark" id="services-list" className="flex flex-col">

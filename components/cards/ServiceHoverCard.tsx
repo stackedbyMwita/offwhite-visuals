@@ -68,10 +68,10 @@ export default function ServiceHoverCard({
             />
 
             {/* Dark gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-black/5" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/15 to-black/5" />
 
             {/* Top cyan edge line */}
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/70 to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-primary/70 to-transparent" />
 
             {/* Button always centered */}
             <ServiceCursorButton />

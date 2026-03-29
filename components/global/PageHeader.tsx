@@ -1,6 +1,7 @@
 import MaxWidthWrapper from '@/components/layout/MaxWidthWrapper'
 import SectionWrapper from '@/components/layout/SectionWrapper'
 import SectionHeader from '@/components/shared/SectionHeader'
+import InteractiveZap from './InteractiveZap'
 
 interface PageHeaderProps {
   eyebrow: string
@@ -47,14 +48,16 @@ export default function PageHeader({
 
         {/* Bottom accent line */}
         <div
-          className="h-px w-full"
+          className="h-px w-full mt-12"
           style={{
             background: 'linear-gradient(90deg, oklch(0.78 0.14 196 / 0.4) 0%, transparent 60%)',
           }}
         />
         </div>
-        <div className='border max-w-lg mx-auto hidden md:block'>
-          // We add here a subtle Zap icon as subtle in the background, which its edges glow when mouse hovers near them, and glows also when mouse hovers on it
+
+        {/* Interactive Illustration Side */}
+        <div className='hidden lg:block flex-1 relative'>
+          <InteractiveZap />
         </div>
       </MaxWidthWrapper>
     </SectionWrapper>
