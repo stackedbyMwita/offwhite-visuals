@@ -1,7 +1,7 @@
 'use client'
 
 import { ProjectCard } from '@/components/cards'
-import CTABanner from '@/components/global/CTABanner'
+import { CTABanner } from '@/components/global'
 import { MaxWidthWrapper, SectionWrapper } from '@/components/layout'
 import { SectionHeader } from '@/components/shared'
 import CustomButton from '@/components/ui/CustomButton'

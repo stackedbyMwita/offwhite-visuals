@@ -1,0 +1,116 @@
+After building enough Next.js projects, certain patterns emerge — the ones that make codebases easy to navigate, and the ones that don't. This is a walkthrough of how we structure projects at Offwhite Visuals, and why we make the decisions we do.
+
+This isn't prescriptive. It's what works for us, and the reasoning behind it.
+
+## Folder structure
+```
+app/                    # Next.js App Router pages
+components/
+  global/               # One-off components: Navbar, Footer, FABGroup
+  layout/               # Structural: MaxWidthWrapper, SectionWrapper
+  shared/               # Reusable across sections: SectionHeader, HeroStats
+  ui/                   # Design system primitives: Button, Card, Input
+data/                   # All content and configuration (our CMS)
+sections/               # Full page sections: HeroSection, AboutSection
+lib/                    # Utilities: cn(), formatDate(), whatsapp helpers
+types/                  # TypeScript interfaces
+content/
+  blog/                 # MDX files
+public/
+  assets/               # Images, fonts, icons
+```
+
+The key decision here is separating `components` by scope rather than by type. A `Button` goes in `ui/`. A `SectionHeader` that's used across many sections goes in `shared/`. A `Navbar` that appears once goes in `global/`. This makes it obvious where to look for anything.
+
+## The data layer
+
+Every piece of content on the site lives in the `data/` folder — structured TypeScript files with strong types.
+```ts
+// data/services.data.ts
+export const services: IService[] = [
+  {
+    slug: 'ui-ux-design',
+    title: 'UI/UX Design',
+    shortDescription: '...',
+    // ...
+  },
+]
+```
+
+This approach gives us the benefits of a CMS without the complexity of one. To update content, you edit a TypeScript file. The types catch mistakes. The data is version-controlled alongside the code.
+
+For larger projects, this data layer can be swapped for API calls or a headless CMS without touching any component code — the interface stays the same.
+
+## Component conventions
+
+### Always accept a `className` prop
+
+Every component accepts an optional `className` for layout overrides. We use `cn()` (a wrapper around `clsx` and `tailwind-merge`) to merge them safely.
+```ts
+import { cn } from '@/lib/utils'
+
+interface Props {
+  className?: string
+}
+
+export default function MyComponent({ className }: Props) {
+  return (
+    <div className={cn('base-styles-here', className)}>
+      ...
+    </div>
+  )
+}
+```
+
+### Co-locate small sub-components
+
+If a component has a small internal sub-component that's never used elsewhere, define it in the same file above the main export. This keeps related code together and reduces file count.
+
+### Named exports for utilities, default exports for components
+```ts
+// Utility — named export
+export function formatDate(iso: string) { ... }
+
+// Component — default export
+export default function BlogCard() { ... }
+```
+
+## Styling approach
+
+We use Tailwind CSS v4 with CSS variables for theming. No separate `tailwind.config.ts` — all theme tokens live in `globals.css`.
+```css
+:root {
+  --primary: oklch(0.78 0.14 196);
+  --dark-bg: oklch(0.13 0.025 196);
+}
+```
+
+For component-specific styles that are too complex for utility classes, we use inline `style` props with CSS variables rather than adding custom CSS classes.
+
+## Animation strategy
+
+We use Framer Motion for all animations. A few rules we follow:
+
+- **Above the fold**: use `initial` / `animate` — not `whileInView`
+- **Below the fold**: use `whileInView` with `viewport={{ once: true }}`
+- **Page transitions**: `AnimatePresence` at the layout level
+- **Interactions**: `whileHover`, `whileTap` on interactive elements
+```tsx
+// Below the fold — correct
+<motion.div
+  initial={{ opacity: 0, y: 24 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ type: 'spring', stiffness: 260, damping: 60 }}
+>
+```
+
+## TypeScript discipline
+
+Every piece of data has an interface. Every component has typed props. We never use `any`.
+
+The interfaces live in `data/types.ts` and are exported from the data barrel. This gives us a single source of truth for the shape of every data structure in the project.
+
+---
+
+None of this is revolutionary. It's disciplined application of patterns that are already well-understood. The value is in applying them consistently — so that six months into a project, the codebase still feels familiar and navigable.

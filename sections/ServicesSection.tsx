@@ -1,7 +1,6 @@
 'use client'
 
-import { ServiceRow } from '@/components/global'
-import CTABanner from '@/components/global/CTABanner'
+import { CTABanner, ServiceRow } from '@/components/global'
 import { MaxWidthWrapper, SectionWrapper } from '@/components/layout'
 import { SectionHeader, SkillsMarquee } from '@/components/shared'
 import CustomButton from '@/components/ui/CustomButton'

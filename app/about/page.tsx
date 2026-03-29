@@ -1,5 +1,4 @@
-import { PageHeader } from '@/components/global'
-import CTABanner from '@/components/global/CTABanner'
+import { CTABanner, PageHeader } from '@/components/global'
 import MaxWidthWrapper from '@/components/layout/MaxWidthWrapper'
 import SectionWrapper from '@/components/layout/SectionWrapper'
 import SectionHeader from '@/components/shared/SectionHeader'
