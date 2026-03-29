@@ -30,7 +30,7 @@ export default function SectionHeader({
 
     return parts.map((part, i) =>
       part.toLowerCase() === accentWord.toLowerCase() ? (
-        <span key={i} className="text-primary">
+        <span key={i} className="text-gradient">
           {part}
         </span>
       ) : (

@@ -177,14 +177,14 @@ export default function HeroSection() {
             {...fadeUp(0.18)}
             className="text-center max-w-4xl"
           >
-            We Craft{' '}
+            Crafting{' '}
             <span className="text-gradient">Bold</span>
             <br className="hidden sm:block" />
             {' '}Digital{' '}
             <span className="relative inline-block">
               Experiences
               <Icons.underline
-                className=' absolute inset-x-0 pointer-events-none -bottom-6 md:-bottom-8 text-accent'
+                className=' absolute inset-x-0 pointer-events-none -bottom-6 md:-bottom-8 lg:-bottom-10 text-accent'
               />
             </span>
           </motion.h1>
@@ -192,8 +192,8 @@ export default function HeroSection() {
           {/* Subtext */}
           <motion.p
             {...fadeUp(0.26)}
-            className="text-center text-base md:text-lg max-w-xl leading-relaxed px-4"
-            style={{ color: 'var(--dark-fg)', opacity: 0.55 }}
+            className="text-center text-muted-foreground text-base md:text-lg max-w-xl leading-relaxed px-4"
+            style={{ color: 'var(--muted-foreground)', opacity: 0.55 }}
           >
             {siteConfig.description}
           </motion.p>
