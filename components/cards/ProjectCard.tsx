@@ -107,13 +107,9 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
             {/* Title */}
             <div className="flex items-start justify-between gap-3 mb-2">
-              <p className="text-base font-bold leading-snug text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-2">
+              <h1 className="text-base font-bold leading-snug text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-2">
                 {project.title}
-              </p>
-              <ArrowUpRight
-                size={16}
-                className="shrink-0 mt-0.5 text-border group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
-              />
+              </h1>
             </div>
 
             {/* Tagline */}

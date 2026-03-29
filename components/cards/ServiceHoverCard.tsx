@@ -7,7 +7,7 @@ import {
   AnimatePresence,
 } from 'framer-motion'
 import Image from 'next/image'
-import ServiceCursorButton from './ServiceCursorButton'
+import ServiceCursorButton from '../global/ServiceCursorButton'
 
 interface ServiceHoverCardProps {
   imageSrc: string

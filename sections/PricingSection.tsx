@@ -1,4 +1,4 @@
-import { PriceCard } from "@/components/global"
+import { PriceCard } from "@/components/cards"
 import { MaxWidthWrapper, SectionWrapper } from '@/components/layout'
 import { SectionHeader } from '@/components/shared'
 import { pricingPlans } from "@/data"

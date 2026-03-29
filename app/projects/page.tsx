@@ -1,7 +1,7 @@
 'use client'
 
+import { ProjectCard } from '@/components/cards'
 import { PageHeader } from '@/components/global'
-import ProjectCard from '@/components/global/ProjectCard'
 import MaxWidthWrapper from '@/components/layout/MaxWidthWrapper'
 import SectionWrapper from '@/components/layout/SectionWrapper'
 import CustomButton from '@/components/ui/CustomButton'

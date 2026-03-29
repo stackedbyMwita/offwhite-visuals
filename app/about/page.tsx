@@ -54,6 +54,7 @@ export default function AboutPage() {
                   src={author.avatar}
                   alt={author.name}
                   fill
+                  priority
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors duration-700" />

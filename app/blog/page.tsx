@@ -1,6 +1,7 @@
 'use client'
 
-import { BlogCard, PageHeader } from '@/components/global'
+import { BlogCard } from '@/components/cards'
+import { PageHeader } from '@/components/global'
 import CTABanner from '@/components/global/CTABanner'
 import MaxWidthWrapper from '@/components/layout/MaxWidthWrapper'
 import SectionWrapper from '@/components/layout/SectionWrapper'

@@ -1,6 +1,6 @@
 'use client'
 
-import { TestimonialCard } from "@/components/global";
+import { TestimonialCard } from "@/components/cards";
 import { MaxWidthWrapper, SectionWrapper } from '@/components/layout';
 import { SectionHeader } from "@/components/shared";
 import { testimonials } from "@/data";

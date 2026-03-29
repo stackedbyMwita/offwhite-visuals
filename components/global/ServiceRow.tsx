@@ -1,11 +1,11 @@
 'use client'
 
-import { useRef, useState, useCallback } from 'react'
-import { motion, useMotionValue, AnimatePresence } from 'framer-motion'
+import { IService } from '@/types'
+import { AnimatePresence, motion, useMotionValue } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
-import { IService } from '@/types'
-import ServiceHoverCard from './ServiceHoverCard'
+import { useCallback, useRef, useState } from 'react'
+import { ServiceHoverCard } from '../cards'
 
 interface ServiceRowProps {
   service: IService

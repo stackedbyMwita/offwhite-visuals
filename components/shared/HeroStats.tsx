@@ -25,7 +25,7 @@ export default function HeroStats({ stats, className }: HeroStatsProps) {
           key={i}
           className="flex flex-col gap-1 px-6 first:pl-0 last:pr-0"
         >
-          <span className="text-2xl md:text-3xl font-bold text-primary leading-none tabular-nums">
+          <h1 className="text-2xl md:text-3xl font-bold text-primary leading-none tabular-nums">
             
             {isInView ? (
               <CountUp
@@ -42,7 +42,7 @@ export default function HeroStats({ stats, className }: HeroStatsProps) {
               '0'
             )}
             {stat.suffix}
-          </span>
+          </h1>
           <span className="text-[11px] text-white/40 tracking-widest leading-tight max-w-22.5">
             {stat.label}
           </span>

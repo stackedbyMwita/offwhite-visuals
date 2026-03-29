@@ -22,13 +22,14 @@ export default function PageHeader({
   return (
     <SectionWrapper
       variant="dark"
-      suppressTexture        // ← new prop — tells SectionWrapper not to render glow blobs
+      suppressTexture
       className="relative flex flex-col pt-32 md:pt-40 pb-16 md:pb-24 overflow-hidden"
     >
 
       {/* Content */}
-      <MaxWidthWrapper className="relative z-10 flex flex-col gap-8">
-        <SectionHeader
+      <MaxWidthWrapper className="relative z-10 flex justify-between gap-8">
+        <div className='flex flex-col'>
+          <SectionHeader
           eyebrow={eyebrow}
           heading={heading}
           accentWord={accentWord}
@@ -51,6 +52,10 @@ export default function PageHeader({
             background: 'linear-gradient(90deg, oklch(0.78 0.14 196 / 0.4) 0%, transparent 60%)',
           }}
         />
+        </div>
+        <div className='border max-w-lg mx-auto hidden md:block'>
+          // We add here a subtle Zap icon as subtle in the background, which its edges glow when mouse hovers near them, and glows also when mouse hovers on it
+        </div>
       </MaxWidthWrapper>
     </SectionWrapper>
   )

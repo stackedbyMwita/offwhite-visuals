@@ -1,6 +1,6 @@
 'use client'
 
-import { ProjectCard } from '@/components/global'
+import { ProjectCard } from '@/components/cards'
 import CTABanner from '@/components/global/CTABanner'
 import { MaxWidthWrapper, SectionWrapper } from '@/components/layout'
 import { SectionHeader } from '@/components/shared'
