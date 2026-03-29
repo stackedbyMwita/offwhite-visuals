@@ -10,7 +10,6 @@ interface BlogCardProps {
 }
 
 // ── Shared Sub-Components ───────────────────────────────────
-
 const CardArrow = ({ size = 18, className = "" }) => (
   <ArrowUpRight
     size={size}
@@ -30,7 +29,6 @@ const MetaInfo = ({ date, time, size = 10 }: { date: string; time: number; size?
 )
 
 // ── Component Variants ──────────────────────────────────────
-
 function LargeCard({ post }: { post: IBlogPost }) {
   const { coverImage, title, publishedAt, readingTime, excerpt, category, slug, tags } = post
 
@@ -153,7 +151,6 @@ function DefaultCard({ post }: { post: IBlogPost }) {
 }
 
 // ── Main export ──────────────────────────────────────────────
-
 const VARIANTS = {
   large: LargeCard,
   compact: CompactCard,

@@ -1,7 +1,7 @@
 import MaxWidthWrapper from '@/components/layout/MaxWidthWrapper'
 import SectionWrapper from '@/components/layout/SectionWrapper'
 import SectionHeader from '@/components/shared/SectionHeader'
-import InteractiveZap from './InteractiveZap'
+import { InteractiveZap } from './'
 
 interface PageHeaderProps {
   eyebrow: string
