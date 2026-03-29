@@ -1,6 +1,7 @@
 'use client'
 
 import { ProjectCard } from '@/components/global'
+import CTABanner from '@/components/global/CTABanner'
 import { MaxWidthWrapper, SectionWrapper } from '@/components/layout'
 import { SectionHeader } from '@/components/shared'
 import CustomButton from '@/components/ui/CustomButton'
@@ -43,6 +44,7 @@ export default function ProjectsSection() {
             label="View All Projects"
             href="/projects"
             variant="secondary"
+            className='w-fit'
           />
         </div>
 
@@ -125,27 +127,14 @@ export default function ProjectsSection() {
         )}
 
         {/* ── Bottom CTA strip ──────────────────────────── */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, type: 'spring', stiffness: 260, damping: 60 }}
-          className="mt-16 md:mt-20 flex flex-col sm:flex-row items-center justify-between gap-6 px-8 md:px-12 py-8 rounded-3xl border border-border/40 bg-secondary/40"
-        >
-          <div className="flex flex-col gap-1 text-center sm:text-left">
-            <span className="text-xl md:text-2xl font-bold font-serif text-foreground">
-              Have a project in mind?
-            </span>
-            <span className="text-sm text-muted-foreground">
-              We would love to hear about it. Let's make something great together.
-            </span>
-          </div>
-          <CustomButton
-            label="Start a Project"
-            href="/contact"
-            className="shrink-0"
-          />
-        </motion.div>
+        <CTABanner
+          variant="light"
+          heading="Have a project in mind?"
+          body="We would love to hear about it. Let's make something great together."
+          buttonLabel="Start a Project"
+          buttonHref="/contact"
+          className="mt-12"
+        />
       </MaxWidthWrapper>
     </SectionWrapper>
   )

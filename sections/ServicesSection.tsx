@@ -1,8 +1,9 @@
 'use client'
 
 import { ServiceRow } from '@/components/global'
+import CTABanner from '@/components/global/CTABanner'
 import { MaxWidthWrapper, SectionWrapper } from '@/components/layout'
-import { SectionHeader } from '@/components/shared'
+import { SectionHeader, SkillsMarquee } from '@/components/shared'
 import CustomButton from '@/components/ui/CustomButton'
 import { services } from '@/data'
 import { motion } from 'framer-motion'
@@ -14,7 +15,7 @@ export default function ServicesSection() {
       id="services"
       className="flex flex-col"
     >
-      <MaxWidthWrapper className="flex flex-col pt-24 md:pt-32 pb-24 md:pb-32">
+      <MaxWidthWrapper className="flex flex-col pt-24 md:pt-32 pb-12">
 
         {/* ── Section header ─────────────────────────────── */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-4">
@@ -92,40 +93,25 @@ export default function ServicesSection() {
           ))}
         </div>
 
-        {/* ── Bottom CTA banner ──────────────────────────── */}
-        <motion.div
+        <CTABanner
+          variant="dark"
+          heading="Not sure what you need?"
+          body="Let's talk through your project and figure it out together."
+          buttonLabel="Book a Free Call"
+          buttonHref="/contact"
+          className="my-12"
+        />
+        
+      </MaxWidthWrapper>
+      <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3, type: 'spring', stiffness: 260, damping: 60 }}
-          className="mt-16 md:mt-20 flex flex-col sm:flex-row items-center justify-between gap-6 px-8 md:px-12 py-8 md:py-10 rounded-3xl border"
-          style={{
-            borderColor: 'oklch(0.78 0.14 196 / 0.15)',
-            background:
-              'linear-gradient(135deg, oklch(0.78 0.14 196 / 0.06) 0%, oklch(0.13 0.025 196 / 0) 100%)',
-          }}
+          className=""
         >
-          <div className="flex flex-col gap-1 text-center sm:text-left">
-            <span
-              className="text-xl md:text-2xl font-bold font-serif"
-              style={{ color: 'var(--dark-fg)' }}
-            >
-              Not sure what you need?
-            </span>
-            <span
-              className="text-sm"
-              style={{ color: 'oklch(0.97 0.005 196 / 0.45)' }}
-            >
-              Let's talk through your project and figure it out together.
-            </span>
-          </div>
-          <CustomButton
-            label="Book a Free Call"
-            href="/contact"
-            className="shrink-0"
-          />
+          <SkillsMarquee/>
         </motion.div>
-      </MaxWidthWrapper>
     </SectionWrapper>
   )
 }

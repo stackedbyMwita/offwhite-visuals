@@ -1,6 +1,9 @@
+"use client"
+
 import { SectionWrapper } from "@/components/layout";
 import { SectionHeader } from "@/components/shared";
 import CustomButton from "@/components/ui/CustomButton";
+import { motion } from 'framer-motion'
 
 export default function CTASection() {
   return (
@@ -9,8 +12,13 @@ export default function CTASection() {
       id="services"
       className="flex flex-col"
     >
-      <div className="flex flex-col pt-24 m-0 px-6 md:px-16 lg:px-24 xl:px-32 py-16 md:py-20">
-        {/* ── Section header ─────────────────────────────── */}
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.3, type: 'spring', stiffness: 260, damping: 60 }}
+        className="flex flex-col pt-24 m-0 px-6 md:px-16 lg:px-24 xl:px-32 py-16 md:py-20"
+      >
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-4">
           <SectionHeader
             eyebrow=""
@@ -23,9 +31,10 @@ export default function CTASection() {
           <CustomButton
             label="Let's talk"
             href="/contact"
+            className="w-fit"
           />
         </div>
-      </div>
+      </motion.div>
     </SectionWrapper>
   )
 }

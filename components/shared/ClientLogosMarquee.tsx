@@ -18,9 +18,6 @@ export default function ClientLogosMarquee({
   return (
     <div className={cn('w-full overflow-hidden', className)}>
       <Marquee
-        gradient
-        gradientWidth={800}
-        gradientColor="var(--background)"
         speed={speed}
         pauseOnHover
       >
@@ -34,13 +31,13 @@ export default function ClientLogosMarquee({
                 // eslint-disable-next-line @next/next/no-img-element
                 <div className='flex items-center gap-2'>
                   <img
-                  src={logo.src}
-                  alt={logo.name}
-                  className="h-8 w-auto object-contain"
-                />
-                <span className="text-2xl font-bold tracking-widest font-inter text-foreground">
-                  {logo.name}
-                </span>  
+                    src={logo.src}
+                    alt={logo.name}
+                    className="h-8 w-auto object-contain"
+                  />
+                  <span className="text-2xl font-bold tracking-widest font-inter text-foreground">
+                    {logo.name}
+                  </span>  
                 </div>
               ) : (
                 <span className="text-2xl font-bold tracking-widest font-inter text-foreground">

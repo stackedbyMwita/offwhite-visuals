@@ -82,7 +82,7 @@ export default function ServiceRow({ service, index }: ServiceRowProps) {
               }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
               className="text-2xl md:text-4xl lg:text-5xl font-bold font-serif tracking-tight leading-none whitespace-nowrap overflow-hidden text-ellipsis"
-              style={{ color: 'var(--dark-fg)/50' }}
+              style={{ color: 'var(--dark-fg)' }}
             >
               {service.title}
             </motion.h3>

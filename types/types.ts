@@ -127,3 +127,106 @@ export interface IPricingPlan {
   highlighted: boolean // true = recommended card
   cta: string
 }
+
+// ============================================================
+// BLOG
+// ============================================================
+
+export interface IBlogPost {
+  slug: string
+  title: string
+  excerpt: string
+  coverImage: string
+  publishedAt: string   // ISO date string e.g. '2024-11-15'
+  updatedAt?: string
+  readingTime: number   // minutes
+  category: IBlogCategory
+  tags: string[]
+  featured: boolean
+  author: IAuthor
+}
+
+export type IBlogCategory =
+  | 'Design'
+  | 'Development'
+  | 'Branding'
+  | 'Strategy'
+  | 'Case Study'
+  | 'Behind the Scenes'
+
+// ============================================================
+// AUTHOR (solo — but typed for extensibility)
+// ============================================================
+
+export interface IAuthor {
+  name: string
+  role: string
+  avatar: string
+  bio: string
+  socials: ISocial[]
+}
+
+// ============================================================
+// ABOUT
+// ============================================================
+
+export interface ITimelineEvent {
+  year: number
+  title: string
+  description: string
+  highlight?: boolean  // true = render with cyan accent
+}
+
+export interface IValue {
+  title: string
+  description: string
+  icon: string  // lucide icon name
+}
+
+export interface IAboutPage {
+  headline: string
+  subheadline: string
+  story: string[]            // paragraphs
+  mission: string
+  approach: string
+  values: IValue[]
+  timeline: ITimelineEvent[]
+  author: IAuthor
+}
+
+// ============================================================
+// CONTACT
+// ============================================================
+
+export interface IContactPage {
+  headline: string
+  subheadline: string
+  email: string
+  phone: string
+  whatsapp: string
+  location: string
+  locationUrl: string        // Google Maps URL
+  availability: string       // e.g. "Mon–Fri, 9am–6pm EAT"
+  responseTime: string       // e.g. "Within 4 hours"
+  services: string[]         // quick service checklist for contact form
+}
+
+// ============================================================
+// SERVICES PAGE
+// ============================================================
+
+export interface IServicesPage {
+  headline: string
+  subheadline: string
+  description: string
+}
+
+// ============================================================
+// PROJECTS PAGE
+// ============================================================
+
+export interface IProjectsPage {
+  headline: string
+  subheadline: string
+  description: string
+}

@@ -5,7 +5,7 @@ export const siteConfig: ISiteMeta = {
   title: "Offwhite Visuals — Creative Digital Studio",
   tagline: 'We craft bold digital experiences.',
   description:
-    'Offwhite Visuals is a creative digital studio specialising in UI/UX design, full-stack development, and brand identity. Based in Nairobi, building for the world.',
+    'Offwhite Visuals is a creative digital studio specialising in Graphic Design, UI/UX design, full-stack development, brand identity and SEO. Based in Nairobi, building for the world.',
   url: 'https://offwhitevisuals.com',
   email: 'hello@offwhitevisuals.com',
   phone: '+254718521808',

@@ -13,10 +13,7 @@ export default function AboutSection() {
       id="about"
       className="flex flex-col"
     >
-      {/* ── Logos marquee — full bleed, no max-width ── */}
-      <div className="w-full pt-16 bg-white/50 md:pt-24 pb-12 md:pb-16 border-b border-border/40">
-        <ClientLogosMarquee logos={clientLogos} />
-      </div>
+      
 
       {/* ── Main content ──────────────────────────────── */}
       <MaxWidthWrapper className="py-20 md:py-28">
@@ -50,6 +47,10 @@ export default function AboutSection() {
           </div>
         </div>
       </MaxWidthWrapper>
+      {/* ── Logos marquee — full bleed, no max-width ── */}
+      <div className="pb-16 md:pb-24">
+        <ClientLogosMarquee logos={clientLogos} />
+      </div>
     </SectionWrapper>
   )
 }

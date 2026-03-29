@@ -1,5 +1,6 @@
 'use client'
 
+import { Icons } from '@/components/global/Icons'
 import { MaxWidthWrapper, SectionWrapper } from '@/components/layout'
 import { HeroStats } from '@/components/shared'
 import CustomButton from '@/components/ui/CustomButton'
@@ -182,12 +183,8 @@ export default function HeroSection() {
             {' '}Digital{' '}
             <span className="relative inline-block">
               Experiences
-              <motion.span
-                className="absolute -bottom-1 left-0 h-0.75 w-full rounded-full bg-primary"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                style={{ originX: 0 }}
-                transition={{ delay: 0.9, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              <Icons.underline
+                className=' absolute inset-x-0 pointer-events-none -bottom-6 md:-bottom-8 text-accent'
               />
             </span>
           </motion.h1>

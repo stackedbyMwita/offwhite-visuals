@@ -10,6 +10,7 @@ interface SectionWrapperProps {
   id?: string
   fullHeight?: boolean
   enableMouseGlow?: boolean
+  suppressTexture?: boolean
 }
 
 export default function SectionWrapper({
@@ -19,6 +20,7 @@ export default function SectionWrapper({
   id,
   fullHeight = false,
   enableMouseGlow = true,
+  suppressTexture = false,
 }: SectionWrapperProps) {
   const sectionRef = useRef<HTMLElement>(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -72,10 +74,10 @@ export default function SectionWrapper({
       )}
     >
       {/* Background texture */}
-      {variant === 'light' && (
+      {!suppressTexture && variant === 'light' && (
         <div className="section-grid-bg" aria-hidden="true" />
       )}
-      {variant === 'dark' && (
+      {!suppressTexture && variant === 'dark' && (
         <div className="section-glow-bg" aria-hidden="true">
           <div className="glow glow-1" />
           <div className="glow glow-2" />
