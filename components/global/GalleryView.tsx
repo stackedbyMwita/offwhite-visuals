@@ -138,7 +138,7 @@ export default function GalleryView({ images, title }: GalleryViewProps) {
 
       {/* Grid — 3/4 screen height */}
       <div
-        className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 overflow-hidden rounded-3xl"
+        className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 overflow-hidden"
         style={{ height: '75vh' }}
       >
         {isInView ? (
@@ -147,14 +147,14 @@ export default function GalleryView({ images, title }: GalleryViewProps) {
             <GalleryColumn
               images={col1}
               direction="up"
-              speed={55}
+              speed={17}
             />
 
             {/* Col 2 — scrolls down (counterlateral) */}
             <GalleryColumn
               images={col2}
               direction="down"
-              speed={65}
+              speed={15}
               className="hidden sm:block"
             />
 
@@ -162,7 +162,7 @@ export default function GalleryView({ images, title }: GalleryViewProps) {
             <GalleryColumn
               images={col3}
               direction="up"
-              speed={45}
+              speed={12}
               className="hidden lg:block"
             />
 
@@ -170,7 +170,7 @@ export default function GalleryView({ images, title }: GalleryViewProps) {
             <GalleryColumn
               images={col4}
               direction="down"
-              speed={70}
+              speed={16}
               className="hidden lg:block"
             />
           </>
