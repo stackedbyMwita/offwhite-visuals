@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
 import CustomButton from '../ui/CustomButton'
 
 export default function ServiceCursorButton() {

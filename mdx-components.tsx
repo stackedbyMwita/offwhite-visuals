@@ -4,17 +4,17 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Headings
     h1: ({ children }) => (
-      <h1 className="text-4xl md:text-5xl font-bold font-serif tracking-tight leading-tight mt-12 mb-6 text-foreground">
+      <h1 className="text-4xl md:text-5xl font-bold font-sans tracking-tight leading-tight mt-12 mb-6 text-foreground">
         {children}
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-2xl md:text-3xl font-bold font-serif tracking-tight mt-10 mb-4 text-foreground border-b border-border/40 pb-3">
+      <h2 className="text-2xl md:text-3xl font-bold font-sans tracking-tight mt-10 mb-4 text-foreground border-b border-border/40 pb-3">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-xl font-bold font-serif mt-8 mb-3 text-foreground">
+      <h3 className="text-xl font-bold font-sans mt-8 mb-3 text-foreground">
         {children}
       </h3>
     ),
@@ -80,7 +80,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // Blockquote
     blockquote: ({ children }) => (
       <blockquote
-        className="my-8 pl-6 py-1 border-l-4 italic font-serif text-lg text-foreground/70"
+        className="my-8 pl-6 py-1 border-l-4 italic font-sans text-lg text-foreground/70"
         style={{ borderColor: 'oklch(0.78 0.14 196)' }}
       >
         {children}
@@ -94,7 +94,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </code>
     ),
     pre: ({ children }) => (
-      <pre className="my-6 p-5 rounded-2xl bg-[#1a1a2e] overflow-x-auto text-sm font-mono leading-relaxed border border-white/5">
+      <pre className="my-6 p-5 rounded-2xl bg-[#1a1a2e] overflow-x-auto text-sm font-code leading-relaxed border border-white/5">
         {children}
       </pre>
     ),

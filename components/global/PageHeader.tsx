@@ -28,7 +28,7 @@ export default function PageHeader({
     >
 
       {/* Content */}
-      <MaxWidthWrapper className="relative z-10 flex justify-between gap-8">
+      <MaxWidthWrapper className="relative z-10 flex justify-between items-center gap-8">
         <div className='flex flex-col'>
           <SectionHeader
           eyebrow={eyebrow}

@@ -47,7 +47,6 @@ export default function InteractiveZap() {
   const ringScale       = useTransform(proximity, [0.1, 1], [0.85, 1.25])
   const outerRingOpacity = useTransform(proximity, [0.2, 1], [0.3, 0.75])
   const midRingOpacity  = useTransform(proximity, [0.3, 1], [0.25, 0.85])
-  const innerCoreOpacity = useTransform(proximity, [0.4, 1], [0.25, 0.85])
   const arcOpacity      = useTransform(proximity, [0.3, 1], [0.4, 1])
 
   // ── Global mouse move ────────────────────────────────────
@@ -82,7 +81,7 @@ export default function InteractiveZap() {
     <div
       ref={containerRef}
       className="relative flex items-center justify-center rounded-full overflow-hidden perspective-midrange select-none
-        size-48 sm:size-64 md:size-80 lg:size-96 xl:size-104
+        size-48 md:size-48 lg:size-64 xl:size-80
         mx-auto"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => { setIsHovered(false); setIsPressed(false) }}

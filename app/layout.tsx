@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Outfit, Syne, Fira_Code } from "next/font/google";
 import "./globals.css";
 import { Footer, Navbar } from "@/components/layout";
+import FABGroup from "@/components/global/FABGroup";
 
 const fontSans = Outfit({
   subsets: ["latin"],
@@ -50,6 +51,7 @@ export default function RootLayout({
         <Navbar/>
         {children}
         <Footer />
+        <FABGroup />
       </body>
     </html>
   );
