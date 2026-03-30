@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import ContactForm from '@/components/forms/ContactForm'
 import PageHeader from '@/components/global/PageHeader'
 import MaxWidthWrapper from '@/components/layout/MaxWidthWrapper'
 import SectionWrapper from '@/components/layout/SectionWrapper'
@@ -9,15 +9,18 @@ import CustomButton from '@/components/ui/CustomButton'
 import { contactPage } from '@/data/contact.data'
 import { siteConfig } from '@/data/site.config'
 import {
-  Mail, Phone, MapPin, Clock, MessageCircle,
-  CheckCircle, Send, AlertCircle,
+  Clock,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone
 } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState } from 'react'
 
-// ── Form state type ──────────────────────────────────────────
+// Form state type
 type FormState = 'idle' | 'submitting' | 'success' | 'error'
 
-// ── WhatsApp message builder ─────────────────────────────────
+// WhatsApp message builder
 function buildWhatsAppUrl(data: {
   name: string
   email: string
@@ -122,7 +125,8 @@ export default function ContactPage() {
   }
 
   const inputBase =
-    'w-full px-4 py-3 rounded-xl border bg-background text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-all duration-200 focus:border-primary/50 focus:ring-2 focus:ring-primary/10'
+    'w-full h-11 px-4 rounded-md border border-border bg-background text-sm ' +
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary'
 
   return (
     <>
@@ -175,187 +179,7 @@ export default function ContactPage() {
                 align="left"
                 className="mb-10"
               />
-
-              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-
-                {/* Name + Email row */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="flex flex-col gap-2">
-                    <label className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                      Your Name *
-                    </label>
-                    <input
-                      name="name"
-                      type="text"
-                      placeholder="Alex Mwita"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className={inputBase}
-                      style={{ borderColor: 'var(--border)' }}
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                      Email Address *
-                    </label>
-                    <input
-                      name="email"
-                      type="email"
-                      placeholder="hello@yourcompany.com"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className={inputBase}
-                      style={{ borderColor: 'var(--border)' }}
-                    />
-                  </div>
-                </div>
-
-                {/* Service selection */}
-                <div className="flex flex-col gap-3">
-                  <label className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                    Service You Need
-                  </label>
-                  <div className="flex flex-wrap gap-2">
-                    {contactPage.services.map((service) => {
-                      const isSelected = selectedService === service
-                      return (
-                        <button
-                          key={service}
-                          type="button"
-                          onClick={() => handleServiceSelect(service)}
-                          className="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 outline-none"
-                          style={{
-                            backgroundColor: isSelected
-                              ? 'oklch(0.78 0.14 196)'
-                              : 'transparent',
-                            color: isSelected
-                              ? 'oklch(0.13 0.025 196)'
-                              : 'oklch(0.50 0.02 196)',
-                            border: isSelected
-                              ? '1px solid oklch(0.78 0.14 196)'
-                              : '1px solid oklch(0.90 0.01 196)',
-                          }}
-                        >
-                          {service}
-                        </button>
-                      )
-                    })}
-                  </div>
-                </div>
-
-                {/* Budget */}
-                <div className="flex flex-col gap-2">
-                  <label className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                    Rough Budget
-                  </label>
-                  <select
-                    name="budget"
-                    value={formData.budget}
-                    onChange={handleChange}
-                    className={inputBase}
-                    style={{ borderColor: 'var(--border)' }}
-                  >
-                    <option value="" disabled>Select a range...</option>
-                    <option value="Under $500">Under $500</option>
-                    <option value="$500 – $1,000">$500 – $1,000</option>
-                    <option value="$1,000 – $3,000">$1,000 – $3,000</option>
-                    <option value="$3,000 – $7,000">$3,000 – $7,000</option>
-                    <option value="$7,000+">$7,000+</option>
-                    <option value="Not sure yet">Not sure yet</option>
-                  </select>
-                </div>
-
-                {/* Message */}
-                <div className="flex flex-col gap-2">
-                  <label className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                    Your Message *
-                  </label>
-                  <textarea
-                    name="message"
-                    placeholder="Tell me about your project — what you need, your timeline, and any context that would help..."
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className={`${inputBase} resize-none`}
-                    style={{ borderColor: 'var(--border)' }}
-                  />
-                </div>
-
-                {/* Submit */}
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
-                  <button
-                    type="submit"
-                    disabled={formState === 'submitting' || formState === 'success'}
-                    className="inline-flex items-center gap-2 px-8 py-3 rounded-full text-sm font-semibold tracking-wide transition-all duration-200 active:scale-[0.97] disabled:opacity-60 disabled:pointer-events-none"
-                    style={{
-                      backgroundColor: 'oklch(0.78 0.14 196)',
-                      color: 'oklch(0.13 0.025 196)',
-                    }}
-                  >
-                    <AnimatePresence mode="wait">
-                      {formState === 'submitting' ? (
-                        <motion.span
-                          key="submitting"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          className="flex items-center gap-2"
-                        >
-                          <motion.div
-                            className="size-4 border-2 border-current border-t-transparent rounded-full"
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 0.8, repeat: Infinity, ease: 'linear' }}
-                          />
-                          Opening WhatsApp...
-                        </motion.span>
-                      ) : formState === 'success' ? (
-                        <motion.span
-                          key="success"
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          className="flex items-center gap-2"
-                        >
-                          <CheckCircle size={16} />
-                          Message Sent!
-                        </motion.span>
-                      ) : (
-                        <motion.span
-                          key="idle"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          className="flex items-center gap-2"
-                        >
-                          <Send size={15} />
-                          Send via WhatsApp
-                        </motion.span>
-                      )}
-                    </AnimatePresence>
-                  </button>
-
-                  {/* Error message */}
-                  <AnimatePresence>
-                    {formState === 'error' && (
-                      <motion.p
-                        initial={{ opacity: 0, x: -8 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0 }}
-                        className="flex items-center gap-2 text-xs text-destructive"
-                      >
-                        <AlertCircle size={13} />
-                        Please fill in your name, email and message.
-                      </motion.p>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                <p className="text-xs text-muted-foreground">
-                  Clicking send opens WhatsApp with your message pre-filled.
-                  Your details are never stored or shared.
-                </p>
-              </form>
+              <ContactForm />
             </div>
 
             {/* ── Right — info + direct contacts ────────── */}
