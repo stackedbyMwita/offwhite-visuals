@@ -47,7 +47,7 @@ function LargeCard({ post }: { post: IBlogPost }) {
       <CustomCard
         className="h-full hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500"
         header={
-          <div className="relative w-full aspect-[16/10] overflow-hidden rounded-t-xl">
+          <div className="relative w-full aspect-16/10 overflow-hidden rounded-t-xl">
             <Image
               src={post.coverImage}
               alt={post.title}

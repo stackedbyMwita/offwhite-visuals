@@ -198,7 +198,7 @@ export default async function ProjectPage({
       {/* ── Cover image ───────────────────────────────────── */}
       <SectionWrapper variant="light" className="flex flex-col pb-0">
         <MaxWidthWrapper className="pt-12">
-          <div className="relative w-full aspect-[21/9] rounded-3xl overflow-hidden shadow-xl border border-border/20">
+          <div className="relative w-full aspect-21/9 rounded-3xl overflow-hidden shadow-xl border border-border/20">
             <Image
               src={project.coverImage}
               alt={project.title}
@@ -207,7 +207,7 @@ export default async function ProjectPage({
               className="object-cover"
               sizes="100vw"
             />
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-primary/50 to-transparent" />
           </div>
         </MaxWidthWrapper>
       </SectionWrapper>
@@ -300,7 +300,7 @@ export default async function ProjectPage({
                   <div className="flex flex-col gap-4">
                     {/* First image — full width */}
                     {project.images[0] && (
-                      <div className="relative w-full aspect-[16/9] rounded-2xl overflow-hidden border border-border/20 shadow-md">
+                      <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-border/20 shadow-md">
                         <Image
                           src={project.images[0]}
                           alt={`${project.title} — screenshot 1`}
@@ -317,7 +317,7 @@ export default async function ProjectPage({
                         {project.images.slice(1).map((img, i) => (
                           <div
                             key={i}
-                            className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-border/20 shadow-md"
+                            className="relative w-full aspect-4/3 rounded-2xl overflow-hidden border border-border/20 shadow-md"
                           >
                             <Image
                               src={img}
