@@ -32,13 +32,13 @@ function GalleryCard({
 }) {
   return (
     <div
-      className="relative w-full overflow-hidden rounded-2xl border border-white/5 shadow-xl shadow-black/30 opacity-0 animate-gallery-fade"
+      className="relative w-full overflow-hidden opacity-0 animate-gallery-fade"
       style={{
         animationDelay: DELAYS[delayIndex % DELAYS.length],
         animationFillMode: 'forwards',
       }}
     >
-      <div className="relative w-full aspect-[3/4]">
+      <div className="relative w-full aspect-3/4">
         <Image
           src={src}
           alt={alt}
@@ -49,7 +49,7 @@ function GalleryCard({
         {/* Subtle hover overlay */}
         <div className="absolute inset-0 bg-primary/0 hover:bg-primary/8 transition-colors duration-500" />
         {/* Top cyan line */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-primary/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
       </div>
     </div>
   )
@@ -116,7 +116,7 @@ export default function GalleryView({ images, title }: GalleryViewProps) {
   const isInView = useInView(containerRef, { once: true, amount: 0.15 })
 
   // Split into 4 columns — 2 on tablet, 1 on mobile
-  const [col1, col2, col3, col4] = splitArray(images, 4)
+  const [col1, col2, col3, col4, col5, col6] = splitArray(images, 6)
 
   return (
     <div ref={containerRef} className="w-full flex flex-col gap-6">
@@ -138,7 +138,7 @@ export default function GalleryView({ images, title }: GalleryViewProps) {
 
       {/* Grid — 3/4 screen height */}
       <div
-        className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 overflow-hidden"
+        className="relative grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4 overflow-hidden"
         style={{ height: '75vh' }}
       >
         {isInView ? (
@@ -172,6 +172,21 @@ export default function GalleryView({ images, title }: GalleryViewProps) {
               direction="down"
               speed={16}
               className="hidden lg:block"
+            />
+
+            {/* Col 5 — scrolls up */}
+            <GalleryColumn
+              images={col5}
+              direction="up"
+              speed={17}
+            />
+
+            {/* Col 6 — scrolls down (counterlateral) */}
+            <GalleryColumn
+              images={col6}
+              direction="down"
+              speed={15}
+              className="hidden sm:block"
             />
           </>
         ) : null}
