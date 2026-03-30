@@ -1,3 +1,4 @@
+import { GalleryView } from '@/components/global'
 import CTABanner from '@/components/global/CTABanner'
 import PageHeader from '@/components/global/PageHeader'
 import RelatedProjectCard from '@/components/global/RelatedProjectCard'
@@ -7,6 +8,7 @@ import MaxWidthWrapper from '@/components/layout/MaxWidthWrapper'
 import SectionWrapper from '@/components/layout/SectionWrapper'
 import SectionHeader from '@/components/shared/SectionHeader'
 import CustomButton from '@/components/ui/CustomButton'
+import { SERVICE_GALLERIES } from '@/data/images.data'
 import { projects } from '@/data/projects.data'
 import { services } from '@/data/services.data'
 import { siteConfig } from '@/data/site.config'
@@ -241,6 +243,25 @@ export default async function ServicePage({
           </div>
         </MaxWidthWrapper>
       </SectionWrapper>
+
+      {/* ── Work Gallery ──────────────────────────────────── */}
+      {SERVICE_GALLERIES[service.slug] && (
+        <SectionWrapper variant="dark" className="flex flex-col">
+          <MaxWidthWrapper className="py-20 md:py-28">
+            <SectionHeader
+              eyebrow="Our Work"
+              heading="Samples of What We've Worked on"
+              accentWord="Worked"
+              align="left"
+              className="mb-12"
+            />
+            <GalleryView
+              images={SERVICE_GALLERIES[service.slug]}
+              title={`${service.title} Gallery`}
+            />
+          </MaxWidthWrapper>
+        </SectionWrapper>
+      )}
 
       {/* ── Related projects ──────────────────────────────── */}
       {relatedProjects.length > 0 && (

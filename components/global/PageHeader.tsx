@@ -31,14 +31,14 @@ export default function PageHeader({
       <MaxWidthWrapper className="relative z-10 flex justify-between items-center gap-8">
         <div className='flex flex-col'>
           <SectionHeader
-          eyebrow={eyebrow}
-          heading={heading}
-          accentWord={accentWord}
-          description={description}
-          align={align}
-          headingClassName="max-w-2xl"
-          descriptionClassName="max-w-xl"
-        />
+            eyebrow={eyebrow}
+            heading={heading}
+            accentWord={accentWord}
+            description={description}
+            align={align}
+            headingClassName="max-w-2xl"
+            descriptionClassName="max-w-xl"
+          />
 
         {children && (
           <div className="flex flex-wrap items-center gap-4">
