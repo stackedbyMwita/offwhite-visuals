@@ -117,29 +117,31 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             </div>
           }
           footer={
-            <>
+            <div className="grid grid-cols-3 gap-4">
               {project.outcomes.slice(0, 2).map((outcome, i) => (
-                <div key={i} className="flex flex-col gap-0.5">
-                  <span
-                    className="text-sm font-bold leading-none tabular-nums"
-                    style={{ color: 'oklch(0.78 0.14 196)' }}
-                  >
+                <div
+                  key={i}
+                  className="flex flex-col justify-center pr-4"
+                >
+                  <span className="text-sm font-bold tabular-nums text-primary">
                     {outcome.value}
                   </span>
-                  <span className="text-[9px] text-muted-foreground leading-tight">
+                  <span className="text-xs text-muted-foreground leading-tight">
                     {outcome.label}
                   </span>
                 </div>
               ))}
-              <div className="ml-auto flex flex-col gap-0.5 text-right">
-                <span className="text-[9px] text-muted-foreground">
+
+              {/* Client */}
+              <div className="flex flex-col justify-center items-end text-right">
+                <span className="text-xs text-muted-foreground">
                   Client
                 </span>
-                <span className="text-xs font-semibold text-foreground leading-tight">
+                <span className="text-sm font-semibold text-foreground">
                   {project.client}
                 </span>
               </div>
-            </>
+            </div>
           }
         />
       </Link>
