@@ -16,7 +16,7 @@ export default function ServiceCursorButton() {
       <CustomButton
         label="View Now"
         href="/about"
-        className='bg-white/20 text-white'
+        className='bg-white/20 text-white block'
         variant='ghost'
       />
     </motion.div>

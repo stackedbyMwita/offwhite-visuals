@@ -37,6 +37,25 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <em className="italic text-foreground/80">{children}</em>
     ),
 
+    img: ({ src, alt }) => (
+      <span className="block my-8">
+        <span className="relative block w-full overflow-hidden rounded-2xl border border-border/30 shadow-md">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={src ?? ''}
+            alt={alt ?? ''}
+            className="w-full h-auto object-cover"
+            loading="lazy"
+          />
+        </span>
+        {alt && alt !== '' && (
+          <span className="block text-center text-xs text-muted-foreground mt-3 italic">
+            {alt}
+          </span>
+        )}
+      </span>
+    ),
+
     // Lists
     ul: ({ children }) => (
       <ul className="my-5 pl-6 flex flex-col gap-2 list-none">
@@ -70,7 +89,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Code
     code: ({ children }) => (
-      <code className="font-mono text-sm bg-muted text-primary px-1.5 py-0.5 rounded">
+      <code className="font-code text-sm bg-muted text-primary px-1.5 py-0.5 rounded">
         {children}
       </code>
     ),

@@ -1,7 +1,7 @@
 import { LenisScroll } from "@/components/global";
 import { siteConfig } from "@/data/site.config";
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Outfit, Syne } from "next/font/google";
+import { Inter, JetBrains_Mono, Outfit, Syne, Fira_Code } from "next/font/google";
 import "./globals.css";
 import { Footer, Navbar } from "@/components/layout";
 
@@ -18,6 +18,11 @@ const fontInter = Inter({
 const fontSerif = Syne({
   subsets: ["latin"],
   variable: "--font-serif",
+});
+
+const fontCode = Syne({
+  subsets: ["latin"],
+  variable: "--font-code",
 });
 
 const fontMono = JetBrains_Mono({
@@ -38,7 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable} ${fontInter.variable} h-full antialiased`}
+      className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable} ${fontInter.variable} ${fontCode.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <LenisScroll />

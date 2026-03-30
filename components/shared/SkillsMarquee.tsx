@@ -86,14 +86,7 @@ function MarqueeRow({
       {/* Subtle background glow strip */}
       <div
         className="absolute inset-0 opacity-40"
-        style={{
-          background: `linear-gradient(90deg, 
-            transparent 0%,
-            oklch(0.78 0.14 196 / 0.08) 30%,
-            oklch(0.78 0.14 196 / 0.05) 70%,
-            transparent 100%
-          )`,
-        }}
+        style={{ background: "trnsparent"}}
       />
 
       <Marquee
@@ -120,7 +113,7 @@ function MarqueeRow({
 // ── Main Component ─────────────────────────────────────────────────────
 export default function SkillsMarquee() {
   return (
-    <div className="w-full overflow-hidden py-12 px-4 bg-black/30">
+    <div className="w-full overflow-hidden py-8 px-4">
       <div className="flex flex-col gap-2">
         <MarqueeRow 
           skills={skillsRowOne} 

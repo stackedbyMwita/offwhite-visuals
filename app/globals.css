@@ -82,6 +82,7 @@
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);
   --font-inter: var(--font-inter);
+  --font-code: var(--font-code);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -143,7 +144,7 @@
     @apply text-base leading-relaxed;
   }
   code {
-    font-family: var(--font-mono);
+    font-family: var(--font-code);
     @apply text-sm bg-muted px-1.5 py-0.5 rounded;
   }
   blockquote {
