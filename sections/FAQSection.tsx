@@ -40,7 +40,7 @@ export default function FAQSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, type: 'spring', stiffness: 260, damping: 60 }}
-              className="flex flex-col gap-4 p-6 rounded-2xl border border-border/50 bg-secondary/40"
+              className="flex flex-col gap-4 p-6 rounded-fluid border border-border/50 bg-secondary/40"
             >
               {/* Pulsing dot + label */}
               <div className="flex items-center gap-2">

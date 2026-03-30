@@ -130,7 +130,7 @@ export default async function ServicePage({
                 accentWord="Covers"
                 align="left"
               />
-              <div className="relative w-full aspect-21/9 rounded-2xl overflow-hidden shadow-xl border border-border/20">
+              <div className="relative w-full aspect-21/9 rounded-fluid overflow-hidden shadow-xl border border-border/20">
                 <Image
                   src={service.heroImage}
                   alt={service.title}
@@ -140,7 +140,7 @@ export default async function ServicePage({
                   sizes="100vw"
                 />
                 {/* Cyan edge */}
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+                <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-primary/50 to-transparent" />
               </div>
               <p className="text-base text-muted-foreground leading-[1.85]">
                 {service.fullDescription}
@@ -197,7 +197,7 @@ export default async function ServicePage({
                 ].map((stat) => (
                   <div
                     key={stat.label}
-                    className="flex flex-col gap-1 p-4 rounded-2xl border border-border/40 bg-secondary/40"
+                    className="flex flex-col gap-1 p-4 rounded-fluid border border-border/40 bg-secondary/40"
                   >
                     <span className="text-2xl font-black text-primary">
                       {stat.value}
@@ -296,10 +296,10 @@ export default async function ServicePage({
                   <Link
                     key={s.slug}
                     href={`/services/${s.slug}`}
-                    className="group flex items-start gap-4 p-5 rounded-2xl border border-border/40 hover:border-primary/30 hover:shadow-md hover:shadow-primary/5 transition-all duration-300"
+                    className="group flex items-start gap-4 p-5 rounded-fluid border border-border/40 hover:border-primary/30 hover:shadow-md hover:shadow-primary/5 transition-all duration-300"
                   >
                     <div
-                      className="size-10 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-primary/15"
+                      className="size-10 rounded-fluid flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-primary/15"
                       style={{ backgroundColor: 'oklch(0.78 0.14 196 / 0.08)' }}
                     >
                       <OtherIcon

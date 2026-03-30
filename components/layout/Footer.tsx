@@ -7,12 +7,13 @@ import { IFooterLink } from '@/types'
 import { motion } from 'framer-motion'
 import { User } from 'lucide-react'
 import Link from 'next/link'
+import { DribbbleIcon, InstagramIcon, LinkedInIcon, XIcon } from '../shared'
 
 const socialIconMap: Record<string, React.ReactNode> = {
-  Twitter: <User size={16} />,
-  Instagram: <User size={16} />,
-  Linkedin: <User size={16} />,
-  Dribbble: <User size={16} />,
+  Twitter: <XIcon size={16} />,
+  Instagram: <InstagramIcon size={16} />,
+  Linkedin: <LinkedInIcon size={16} />,
+  Dribbble: <DribbbleIcon size={16} />,
 }
 
 export default function Footer() {
@@ -51,7 +52,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={social.name}
-                className="flex items-center justify-center size-8 rounded-full border border-white/10 text-white/40 hover:border-primary/40 hover:text-primary transition-all duration-300"
+                className="flex items-center justify-center size-12 text-white/40 hover:text-primary transition-all duration-300"
               >
                 {socialIconMap[social.icon]}
               </a>

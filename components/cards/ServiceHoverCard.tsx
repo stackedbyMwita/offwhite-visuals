@@ -52,7 +52,7 @@ export default function ServiceHoverCard({
           */}
           <div
             className="
-              relative overflow-hidden rounded-2xl
+              relative overflow-hidden rounded-fluid
               shadow-2xl shadow-black/60 ring-1 ring-white/10
               w-45 h-45
               md:w-52.5 md:h-52.5

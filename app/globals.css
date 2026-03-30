@@ -128,7 +128,7 @@
     @apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.08];
   }
   h2 {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1];
   }
   h3 {
@@ -295,6 +295,28 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-repeat: repeat;
     background-size: 180px 180px;
+  }
+
+  .rounded-fluid {
+    /* Mobile: 1rem (16px) -> Equivalent to rounded-xl
+       Tablet: 1.5rem (24px) -> Equivalent to rounded-2xl
+       Desktop: 2rem (32px) -> Equivalent to rounded-3xl
+    */
+    @apply rounded-lg md:rounded-xl lg:rounded-2xl;
+    
+    /* Optional: If you want a more surgical approach 
+       using CSS clamp for a smooth transition 
+    */
+    /* border-radius: clamp(1rem, 2vw, 2rem); */
+  }
+
+  /* Use this for inner elements (buttons, inputs) 
+     to maintain "nested radius" harmony */
+  .rounded-fluid-sm {
+    @apply rounded-lg md:rounded-xl lg:rounded-2xl;
+  }
+  .rounded-t-fluid {
+    @apply rounded-t-lg md:rounded-t-xl lg:rounded-t-2xl;
   }
 }
 

@@ -59,7 +59,7 @@ export default function CTABanner({
       viewport={{ once: true }}
       transition={{ delay: 0.3, type: 'spring', stiffness: 260, damping: 60 }}
       className={cn(
-        "flex flex-col sm:flex-row items-center justify-between gap-6 px-8 md:px-14 py-10 rounded-3xl border",
+        "flex flex-col sm:flex-row items-center justify-between gap-6 px-8 md:px-14 py-10 rounded-fluid border",
         className,
       )}
       style={{ borderColor: s.border, background: s.background }}

@@ -40,7 +40,7 @@ function SkillPill({ skill }: { skill: ISkill }) {
 
   return (
     <div
-      className="inline-flex items-center gap-3 mx-2 px-6 py-3 rounded-2xl shrink-0 select-none group"
+      className="inline-flex items-center gap-3 mx-2 px-6 py-3 rounded-fluid shrink-0 select-none group"
       style={{
         background: `linear-gradient(135deg, ${color}12, transparent)`,
         boxShadow: `0 4px 20px -4px ${color}30`,

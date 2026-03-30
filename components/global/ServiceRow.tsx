@@ -171,7 +171,7 @@ export default function ServiceRow({ service, index }: ServiceRowProps) {
 
           {/* Row background wash — never affects height */}
           <motion.div
-            className="absolute inset-0 rounded-2xl pointer-events-none -mx-4"
+            className="absolute inset-0 rounded-fluid pointer-events-none -mx-4"
             variants={{
               idle: { opacity: 0 },
               hovered: { opacity: 1 },

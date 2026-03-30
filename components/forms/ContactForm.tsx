@@ -28,7 +28,7 @@ type FormValues = z.infer<typeof formSchema>
 
 // ── Unified styling ─────────────────────────────────────
 const fieldBase =
-  'w-full h-11 px-4 rounded-md border border-border bg-background text-sm ' +
+  'w-full h-11 px-4 rounded-fluid border border-border bg-background text-sm ' +
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-colors'
 
 const textareaBase = cn(fieldBase, 'h-auto min-h-[120px] py-3 resize-none')

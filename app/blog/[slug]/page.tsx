@@ -120,32 +120,25 @@ export default async function BlogPostPage({
         </div>
       </PageHeader>
 
-      {/* ── Cover image ─────────────────────────────────── */}
-      <SectionWrapper variant="light" className="flex flex-col pb-0">
-        <MaxWidthWrapper className="pt-12 pb-0">
-          <div className="relative w-full aspect-[21/9] rounded-3xl overflow-hidden shadow-xl border border-border/20">
-            <Image
-              src={post.coverImage}
-              alt={post.title}
-              fill
-              priority
-              className="object-cover"
-              sizes="100vw"
-            />
-          </div>
-        </MaxWidthWrapper>
-      </SectionWrapper>
-
       {/* ── Article body ────────────────────────────────── */}
       <SectionWrapper variant="light" className="flex flex-col">
         <MaxWidthWrapper className="py-16 md:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-
+            
             {/* ── Main article ──────────────────────────── */}
             <article className="lg:col-span-8 min-w-0">
               {/* Top sentinel — sidebar goes sticky when this leaves viewport */}
               <div id="article-top-sentinel" className="h-0 w-full" />
-
+              <div className="relative w-full aspect-21/9 rounded-fluid overflow-hidden mb-12">
+                <Image
+                  src={post.coverImage}
+                  alt={post.title}
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="100vw"
+                />
+              </div>
               {MDXContent ? (
                 <div className="mdx-content">
                   <MDXContent />
@@ -185,9 +178,9 @@ export default async function BlogPostPage({
                 <Link
                   key={p.slug}
                   href={`/blog/${p.slug}`}
-                  className="group flex gap-4 p-4 rounded-2xl border border-border/40 hover:border-primary/30 hover:shadow-md transition-all duration-300"
+                  className="group flex gap-4 p-4 rounded-fluid border border-border/40 hover:border-primary/30 hover:shadow-md transition-all duration-300"
                 >
-                  <div className="relative size-20 rounded-xl overflow-hidden shrink-0">
+                  <div className="relative size-20 rounded-fluid overflow-hidden shrink-0">
                     <Image
                       src={p.coverImage}
                       alt={p.title}

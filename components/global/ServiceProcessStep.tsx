@@ -27,7 +27,7 @@ export default function ServiceProcessStep({
         stiffness: 260,
         damping: 60,
       }}
-      className="relative flex flex-col gap-4 p-6 rounded-2xl border transition-all duration-500 group"
+      className="relative flex flex-col gap-4 p-6 rounded-fluid border transition-all duration-500 group"
       style={{
         borderColor: isDark
           ? 'oklch(0.97 0.005 196 / 0.08)'

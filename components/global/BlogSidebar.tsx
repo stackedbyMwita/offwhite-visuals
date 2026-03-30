@@ -6,6 +6,25 @@ import CustomButton from '@/components/ui/CustomButton'
 import { ArrowLeft } from 'lucide-react'
 import { IBlogPost } from '@/types'
 
+import { 
+  XIcon, 
+  InstagramIcon, 
+  LinkedInIcon, 
+  DribbbleIcon, 
+  GitHubIcon, 
+  FacebookIcon 
+} from '@/components/shared';
+import { getCategoryColor } from '@/lib/utils'
+
+const IconMap: Record<string, React.FC<{ size?: number; className?: string }>> = {
+  Twitter: XIcon,
+  Instagram: InstagramIcon,
+  Linkedin: LinkedInIcon, // Note: Match the casing in your data (Linkedin)
+  Dribbble: DribbbleIcon,
+  Github: GitHubIcon,
+  Facebook: FacebookIcon,
+};
+
 interface BlogSidebarProps {
   post: IBlogPost
 }
@@ -19,6 +38,7 @@ function formatDate(iso: string) {
 }
 
 export default function BlogSidebar({ post }: BlogSidebarProps) {
+  const themeColor = getCategoryColor(post.category);
   const [isSticky, setIsSticky] = useState(false)
   const [reachedBottom, setReachedBottom] = useState(false)
 
@@ -55,7 +75,7 @@ export default function BlogSidebar({ post }: BlogSidebarProps) {
 
         {/* ── Author card ─────────────────────────────── */}
         <div
-          className="flex flex-col gap-4 p-5 rounded-2xl border"
+          className="flex flex-col gap-4 p-5 rounded-fluid border"
           style={{
             borderColor: 'var(--border)',
             backgroundColor: 'var(--secondary)',
@@ -69,7 +89,7 @@ export default function BlogSidebar({ post }: BlogSidebarProps) {
           </p>
 
           <div className="flex items-center gap-3">
-            <div className="relative size-12 rounded-xl overflow-hidden shrink-0 border border-border/30">
+            <div className="relative size-12 rounded-fluid overflow-hidden shrink-0 border border-border/30">
               <Image
                 src={post.author.avatar}
                 alt={post.author.name}
@@ -92,77 +112,93 @@ export default function BlogSidebar({ post }: BlogSidebarProps) {
           </p>
 
           <div className="flex items-center gap-2 pt-1">
-            {post.author.socials.map((s) => (
-              <a
-                key={s.name}
-                href={s.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={s.name}
-                className="flex items-center justify-center size-7 rounded-full border border-border/50 text-muted-foreground hover:text-primary hover:border-primary/40 transition-all duration-300"
-              >
-                <span className="text-[9px] font-bold font-mono">
-                  {s.name.slice(0, 2).toUpperCase()}
-                </span>
-              </a>
-            ))}
+            {post.author.socials.map((s) => {
+              const IconComponent = IconMap[s.icon];
+              return (
+                <a
+                  key={s.name}
+                  href={s.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={s.name}
+                  className="flex items-center justify-center size-7 rounded-full border border-border/50 text-muted-foreground hover:text-primary hover:border-primary/40 transition-all duration-300"
+                >
+                  {IconComponent ? (
+                    <IconComponent size={14} />
+                  ) : (
+                    <span className="text-[9px] font-bold font-mono">
+                    {s.name.slice(0, 2).toUpperCase()}
+                  </span>
+                  )}
+                  
+                </a>
+              )
+            })}
           </div>
         </div>
 
         {/* ── Article info ────────────────────────────── */}
         <div
-          className="flex flex-col gap-3 p-5 rounded-2xl border"
+    className="flex flex-col gap-3 p-5 rounded-fluid border transition-colors duration-500"
+    style={{
+      /* Mixes 3% of the category color into the background for a premium tinted feel */
+      backgroundColor: `color-mix(in oklch, ${themeColor}, transparent 97%)`,
+      /* Border is 15% of the category color */
+      borderColor: `color-mix(in oklch, ${themeColor}, transparent 85%)`,
+    }}
+  >
+    <p
+      className="text-[10px] font-bold uppercase tracking-[0.2em]"
+      style={{ color: themeColor }}
+    >
+      Article info
+    </p>
+
+    <div className="flex flex-col gap-2.5 text-xs">
+      <div className="flex items-center justify-between">
+        <span className="text-muted-foreground">Published</span>
+        <span className="font-medium text-foreground">
+          {formatDate(post.publishedAt)}
+        </span>
+      </div>
+      
+      <div className="flex items-center justify-between">
+        <span className="text-muted-foreground">Category</span>
+        <span
+          className="font-medium"
+          style={{ color: themeColor }}
+        >
+          {post.category}
+        </span>
+      </div>
+
+      <div className="flex items-center justify-between">
+        <span className="text-muted-foreground">Reading time</span>
+        <span className="font-medium text-foreground">
+          {post.readingTime} min
+        </span>
+      </div>
+    </div>
+
+    {/* Tags Section */}
+    <div 
+      className="flex flex-wrap gap-1.5 pt-2 border-t"
+      style={{ borderColor: `color-mix(in oklch, ${themeColor}, transparent 90%)` }}
+    >
+      {post.tags.map((tag) => (
+        <span
+          key={tag}
+          className="text-[10px] px-2 py-0.5 rounded-full border transition-all hover:bg-white dark:hover:bg-black"
           style={{
-            borderColor: 'var(--border)',
-            backgroundColor: 'var(--secondary)',
+            borderColor: `color-mix(in oklch, ${themeColor}, transparent 80%)`,
+            color: 'var(--muted-foreground)',
           }}
         >
-          <p
-            className="text-[10px] font-bold uppercase tracking-[0.2em]"
-            style={{ color: 'oklch(0.78 0.14 196)' }}
-          >
-            Article info
-          </p>
-
-          <div className="flex flex-col gap-2.5 text-xs">
-            <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Published</span>
-              <span className="font-medium text-foreground">
-                {formatDate(post.publishedAt)}
-              </span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Category</span>
-              <span
-                className="font-medium"
-                style={{ color: 'oklch(0.78 0.14 196)' }}
-              >
-                {post.category}
-              </span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Reading time</span>
-              <span className="font-medium text-foreground">
-                {post.readingTime} min
-              </span>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap gap-1.5 pt-2 border-t border-border/40">
-            {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-[10px] px-2 py-0.5 rounded-full border"
-                style={{
-                  borderColor: 'var(--border)',
-                  color: 'var(--muted-foreground)',
-                }}
-              >
-                #{tag}
-              </span>
-            ))}
-          </div>
-        </div>
+          #{tag}
+        </span>
+      ))}
+    </div>
+  </div>
 
         {/* ── Back button ─────────────────────────────── */}
         <CustomButton

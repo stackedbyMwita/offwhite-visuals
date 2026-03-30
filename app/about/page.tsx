@@ -48,7 +48,7 @@ export default function AboutPage() {
 
             {/* Left — portrait */}
             <div className="flex flex-col gap-6">
-              <div className="relative w-full aspect-3/4 rounded-3xl overflow-hidden border border-border/20 shadow-xl group">
+              <div className="relative w-full aspect-3/4 rounded-fluid overflow-hidden border border-border/20 shadow-xl group">
                 <Image
                   src={author.avatar}
                   alt={author.name}
@@ -61,7 +61,7 @@ export default function AboutPage() {
 
               {/* Author card below image */}
               <div
-                className="flex items-center gap-4 p-5 rounded-2xl border"
+                className="flex items-center gap-4 p-5 rounded-fluid border"
                 style={{
                   borderColor: 'var(--border)',
                   backgroundColor: 'var(--secondary)',
@@ -116,7 +116,7 @@ export default function AboutPage() {
 
               {/* Mission callout */}
               <div
-                className="p-6 rounded-2xl border-l-4 mt-2"
+                className="p-6 rounded-fluid border-l-4 mt-2"
                 style={{
                   borderColor: 'oklch(0.78 0.14 196)',
                   backgroundColor: 'oklch(0.78 0.14 196 / 0.04)',
@@ -200,10 +200,10 @@ export default function AboutPage() {
               return (
                 <div
                   key={i}
-                  className="flex flex-col gap-4 p-7 rounded-2xl border border-border/40 bg-background hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-500 group"
+                  className="flex flex-col gap-4 p-7 rounded-fluid border border-border/40 bg-background hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-500 group"
                 >
                   <div
-                    className="size-11 rounded-xl flex items-center justify-center transition-colors duration-300 group-hover:bg-primary/15"
+                    className="size-11 rounded-fluid flex items-center justify-center transition-colors duration-300 group-hover:bg-primary/15"
                     style={{ backgroundColor: 'oklch(0.78 0.14 196 / 0.08)' }}
                   >
                     <Icon

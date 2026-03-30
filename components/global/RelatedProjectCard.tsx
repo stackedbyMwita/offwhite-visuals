@@ -10,10 +10,10 @@ interface RelatedProjectCardProps {
 export default function RelatedProjectCard({ project }: RelatedProjectCardProps) {
   return (
     <Link href={`/projects/${project.slug}`} className="group block">
-      <div className="flex gap-4 p-4 rounded-2xl border border-border/40 bg-background hover:border-primary/30 hover:shadow-md hover:shadow-primary/5 transition-all duration-500">
+      <div className="flex gap-4 p-4 rounded-fluid border border-border/40 bg-background hover:border-primary/30 hover:shadow-md hover:shadow-primary/5 transition-all duration-500">
 
         {/* Thumbnail */}
-        <div className="relative size-20 rounded-xl overflow-hidden shrink-0">
+        <div className="relative size-20 rounded-fluid overflow-hidden shrink-0">
           <Image
             src={project.coverImage}
             alt={project.title}

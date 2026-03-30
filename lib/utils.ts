@@ -5,15 +5,15 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export const DEFAULT_THEME_COLOR = '#06b6d4'
+export const DEFAULT_THEME_COLOR = 'oklch(62% 0.19 200)' // A refined Cyan/Blue
 
 export const CATEGORY_COLORS: Record<string, string> = {
-  Design: DEFAULT_THEME_COLOR,
-  Development: DEFAULT_THEME_COLOR,
-  Branding: DEFAULT_THEME_COLOR,
-  Strategy: DEFAULT_THEME_COLOR,
-  'Case Study': DEFAULT_THEME_COLOR,
-  'Behind the Scenes': DEFAULT_THEME_COLOR,
+  Design: 'oklch(65% 0.22 300)',             // Vibrant Purple
+  Development: 'oklch(65% 0.20 180)',        // Teal/Mint
+  Branding: 'oklch(65% 0.24 20)',            // Deep Coral/Pink
+  Strategy: 'oklch(65% 0.15 250)',           // Royal Blue
+  'Case Study': 'oklch(65% 0.22 80)',        // Gold/Ochre
+  'Behind the Scenes': 'oklch(65% 0.05 0)',  // Sophisticated Warm Gray
 }
 
 /**

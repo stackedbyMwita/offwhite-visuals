@@ -16,7 +16,7 @@ export default function ServiceDeliverablesCard({
 
   return (
     <div
-      className="flex flex-col gap-4 p-6 rounded-2xl border"
+      className="flex flex-col gap-4 p-6 rounded-fluid border"
       style={{
         borderColor: isDark
           ? 'oklch(0.78 0.14 196 / 0.15)'

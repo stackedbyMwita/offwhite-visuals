@@ -38,8 +38,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
 
     img: ({ src, alt }) => (
-      <span className="block my-8">
-        <span className="relative block w-full overflow-hidden rounded-2xl border border-border/30 shadow-md">
+      <span className="block my-8 relative">
+        <span className="relative block w-full overflow-hidden rounded-fluid border border-border/30 shadow-md">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={src ?? ''}
@@ -47,9 +47,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
             className="w-full h-auto object-cover"
             loading="lazy"
           />
+          {/* Gradient overlay at the bottom */}
+          <span className="absolute bottom-0 left-0 w-full h-24 bg-linear-to-t from-black/60 to-transparent pointer-events-none" />
         </span>
+
         {alt && alt !== '' && (
-          <span className="block text-center text-xs text-muted-foreground mt-3 italic">
+          <span className="absolute bottom-4 left-4 text-sm font-medium text-white drop-shadow-lg">
             {alt}
           </span>
         )}
@@ -89,12 +92,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Code
     code: ({ children }) => (
-      <code className="font-code text-sm bg-muted text-primary px-1.5 py-0.5 rounded">
+      <code className="font-code text-sm bg-muted text-primary px-1.5 py-0.5 rounded-fluid">
         {children}
       </code>
     ),
     pre: ({ children }) => (
-      <pre className="my-6 p-5 rounded-2xl bg-[#1a1a2e] overflow-x-auto text-sm font-code leading-relaxed border border-white/5">
+      <pre className="my-6 p-5 rounded-fluid bg-[#1a1a2e] overflow-x-auto text-sm font-code leading-relaxed border border-white/5">
         {children}
       </pre>
     ),
@@ -124,7 +127,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Tables
     table: ({ children }) => (
-      <div className="my-6 w-full overflow-x-auto rounded-xl border border-border/40">
+      <div className="my-6 w-full overflow-x-auto rounded-fluid border border-border/40">
         <table className="w-full text-sm">{children}</table>
       </div>
     ),

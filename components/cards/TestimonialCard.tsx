@@ -32,7 +32,7 @@ export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
       <Card className="relative h-80 flex flex-col overflow-visible shadow-sm bg-background">
 
         {/* Avatar — initials fallback when no image */}
-        <div className="absolute -top-8 left-8 size-16 rounded-xl overflow-hidden border-4 border-background shadow-lg z-20 bg-primary">
+        <div className="absolute -top-8 left-8 size-16 rounded-fluid overflow-hidden border-4 border-background shadow-lg z-20 bg-primary">
           {testimonial.avatar ? (
             <Image
               src={`/assets/avatars/${testimonial.avatar}`}

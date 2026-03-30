@@ -20,7 +20,7 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-center">
 
           {/* Left — image */}
-          <div className="relative rounded-3xl overflow-hidden aspect-4/3 shadow-xl border border-border/20 group">
+          <div className="relative rounded-fluid overflow-hidden aspect-4/3 shadow-xl border border-border/20 group">
             <Image
               src="/assets/sections/about-2.png"
               alt="Offwhite Visuals team"

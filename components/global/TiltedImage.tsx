@@ -65,11 +65,11 @@ export default function TiltedImage({ rotateAmplitude = 5, imagePath }: Props) {
           width={1400}
           height={700}
           priority
-          className="w-full rounded-3xl object-cover shadow-2xl shadow-black/40 will-change-transform"
+          className="w-full rounded-fluid object-cover shadow-2xl shadow-black/40 will-change-transform"
         />
 
         {/* Top edge highlight line */}
-        <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/10" />
+        <div className="pointer-events-none absolute inset-0 rounded-fluid ring-1 ring-white/10" />
       </motion.div>
     </motion.figure>
   )

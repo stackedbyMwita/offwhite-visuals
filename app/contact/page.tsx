@@ -51,9 +51,9 @@ function InfoCard({
   href?: string
 }) {
   const content = (
-    <div className="flex items-start gap-4 p-5 rounded-2xl border border-border/40 bg-background hover:border-primary/30 hover:shadow-md hover:shadow-primary/5 transition-all duration-300 group">
+    <div className="flex items-start gap-4 p-5 rounded-fluid border border-border/40 bg-background hover:border-primary/30 hover:shadow-md hover:shadow-primary/5 transition-all duration-300 group">
       <div
-        className="size-10 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-primary/15"
+        className="size-10 rounded-fluid flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-primary/15"
         style={{ backgroundColor: 'oklch(0.78 0.14 196 / 0.08)' }}
       >
         <Icon size={18} style={{ color: 'oklch(0.78 0.14 196)' }} strokeWidth={1.5} />
@@ -125,7 +125,7 @@ export default function ContactPage() {
   }
 
   const inputBase =
-    'w-full h-11 px-4 rounded-md border border-border bg-background text-sm ' +
+    'w-full h-11 px-4 rounded-fluid border border-border bg-background text-sm ' +
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary'
 
   return (
@@ -187,14 +187,14 @@ export default function ContactPage() {
 
               {/* Response time callout */}
               <div
-                className="flex items-center gap-4 p-5 rounded-2xl border"
+                className="flex items-center gap-4 p-5 rounded-fluid border"
                 style={{
                   borderColor: 'oklch(0.78 0.14 196 / 0.2)',
                   backgroundColor: 'oklch(0.78 0.14 196 / 0.04)',
                 }}
               >
                 <div
-                  className="size-10 rounded-xl flex items-center justify-center shrink-0"
+                  className="size-10 rounded-fluid flex items-center justify-center shrink-0"
                   style={{ backgroundColor: 'oklch(0.78 0.14 196 / 0.12)' }}
                 >
                   <Clock size={18} style={{ color: 'oklch(0.78 0.14 196)' }} strokeWidth={1.5} />
@@ -242,7 +242,7 @@ export default function ContactPage() {
 
               {/* Direct WhatsApp CTA */}
               <div
-                className="flex flex-col gap-4 p-6 rounded-2xl border"
+                className="flex flex-col gap-4 p-6 rounded-fluid border"
                 style={{
                   borderColor: 'oklch(0.78 0.14 196 / 0.15)',
                   background: 'linear-gradient(135deg, oklch(0.78 0.14 196 / 0.06) 0%, transparent 100%)',

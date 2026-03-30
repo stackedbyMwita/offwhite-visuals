@@ -65,7 +65,7 @@ function Tooltip({ label }: { label: string }) {
       animate={{ opacity: 1, x: 0, scale: 1 }}
       exit={{ opacity: 0, x: 8, scale: 0.95 }}
       transition={{ duration: 0.15 }}
-      className="absolute right-full mr-3 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-lg px-3 py-1.5 text-xs font-medium shadow-lg pointer-events-none z-50"
+      className="absolute right-full mr-3 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-fluid px-3 py-1.5 text-xs font-medium shadow-lg pointer-events-none z-50"
       style={{
         backgroundColor: 'var(--dark-bg)',
         color: 'var(--dark-fg)',

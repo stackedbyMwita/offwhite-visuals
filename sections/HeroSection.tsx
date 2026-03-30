@@ -72,7 +72,7 @@ function HeroImage({ onPlayClick, imageSrc }: { onPlayClick: () => void, imageSr
         style={{ rotateX, rotateY }}
       >
         {/* Image */}
-        <div className="relative w-full aspect-21/9 rounded-lg overflow-hidden shadow-2xl shadow-black/60">
+        <div className="relative w-full aspect-21/9 rounded-fluid overflow-hidden shadow-2xl shadow-black/60">
           <Image
             src={imageSrc}
             alt="Offwhite Visuals — project showcase"
@@ -125,7 +125,7 @@ function HeroImage({ onPlayClick, imageSrc }: { onPlayClick: () => void, imageSr
         </div>
 
         {/* Top edge highlight */}
-        <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/10" />
+        <div className="pointer-events-none absolute inset-0 rounded-fluid ring-1 ring-white/10" />
       </motion.div>
     </motion.div>
   )

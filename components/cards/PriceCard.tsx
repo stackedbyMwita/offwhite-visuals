@@ -15,7 +15,7 @@ export default function PriceCard({ plan }: PriceCardProps) {
       initial={{ y: 20, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       viewport={{ once: true }}
-      className={`relative flex flex-col p-8 rounded-xl border-2 transition-all duration-500 group overflow-hidden ${
+      className={`relative flex flex-col p-8 rounded-fluid border-2 transition-all duration-500 group overflow-hidden ${
         plan.highlighted
           ? "border-primary shadow-[0_0_60px_rgba(74,213,203,0.15)]"
           : "border-border/10 hover:border-primary/10"

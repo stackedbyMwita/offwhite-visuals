@@ -181,7 +181,7 @@ export default function ProjectsPage() {
 
           {/* Bottom CTA */}
           <div
-            className="flex flex-col sm:flex-row items-center justify-between gap-6 px-8 md:px-12 py-8 rounded-3xl border border-border/40 bg-secondary/40 mt-8"
+            className="flex flex-col sm:flex-row items-center justify-between gap-6 px-8 md:px-12 py-8 rounded-fluid border border-border/40 bg-secondary/40 mt-8"
           >
             <div className="flex flex-col gap-1 text-center sm:text-left">
               <span className="text-xl md:text-2xl font-bold font-serif text-foreground">

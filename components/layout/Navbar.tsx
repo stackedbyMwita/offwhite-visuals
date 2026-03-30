@@ -132,7 +132,7 @@ function NavLink({
 
             {/* Dropdown card */}
             <div
-              className="rounded-xl border shadow-xl shadow-black/10 px-1 py-1 min-w-40"
+              className="rounded-fluid border shadow-xl shadow-black/10 px-1 py-1 min-w-40"
               style={{
                 backgroundColor: scrolled
                   ? 'var(--background)'
@@ -148,7 +148,7 @@ function NavLink({
                   handleSectionClick(e)
                   setDropdownOpen(false)
                 }}
-                className="flex items-center justify-between gap-6 w-full px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150 group/item"
+                className="flex items-center justify-between gap-6 w-full px-3 py-2.5 rounded-fluid text-sm font-medium transition-colors duration-150 group/item"
                 style={{ color: scrolled ? 'var(--foreground)' : 'var(--dark-fg)' }}
               >
                 <span
@@ -172,7 +172,7 @@ function NavLink({
               <Link
                 href={link.pageHref}
                 onClick={() => setDropdownOpen(false)}
-                className="flex items-center justify-between gap-6 w-full px-3 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150 group/page"
+                className="flex items-center justify-between gap-6 w-full px-3 py-2.5 rounded-fluid text-sm font-medium transition-colors duration-150 group/page"
                 style={{ color: scrolled ? 'var(--foreground)' : 'var(--dark-fg)' }}
               >
                 <span className="group-hover/page:text-primary transition-colors duration-150">

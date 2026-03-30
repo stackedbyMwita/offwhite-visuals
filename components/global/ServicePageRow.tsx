@@ -117,7 +117,7 @@ export default function ServicePageRow({ service, index }: ServicePageRowProps) 
         <div className="lg:col-span-3 flex flex-col gap-4 justify-between">
 
           {/* Image */}
-          <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden">
+          <div className="relative w-full aspect-4/3 rounded-fluid overflow-hidden">
             <Image
               src={service.heroImage}
               alt={service.title}
