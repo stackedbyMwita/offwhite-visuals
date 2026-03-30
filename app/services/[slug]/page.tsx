@@ -1,33 +1,30 @@
-import { notFound } from 'next/navigation'
-import type { Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
+import CTABanner from '@/components/global/CTABanner'
+import PageHeader from '@/components/global/PageHeader'
+import RelatedProjectCard from '@/components/global/RelatedProjectCard'
+import ServiceDeliverablesCard from '@/components/global/ServiceDeliverablesCard'
+import ServiceProcessStep from '@/components/global/ServiceProcessStep'
+import MaxWidthWrapper from '@/components/layout/MaxWidthWrapper'
+import SectionWrapper from '@/components/layout/SectionWrapper'
+import SectionHeader from '@/components/shared/SectionHeader'
+import CustomButton from '@/components/ui/CustomButton'
+import { projects } from '@/data/projects.data'
+import { services } from '@/data/services.data'
+import { siteConfig } from '@/data/site.config'
 import {
   ArrowLeft,
   ArrowUpRight,
   CheckIcon,
-  Layers,
   Code2,
-  Sparkles,
+  Layers,
   PenTool,
+  Sparkles,
   TrendingUp,
   type LucideIcon,
 } from 'lucide-react'
-import { motion } from 'framer-motion'
-
-import { services } from '@/data/services.data'
-import { projects } from '@/data/projects.data'
-import { siteConfig } from '@/data/site.config'
-
-import PageHeader from '@/components/global/PageHeader'
-import MaxWidthWrapper from '@/components/layout/MaxWidthWrapper'
-import SectionWrapper from '@/components/layout/SectionWrapper'
-import SectionHeader from '@/components/shared/SectionHeader'
-import CTABanner from '@/components/global/CTABanner'
-import CustomButton from '@/components/ui/CustomButton'
-import ServiceProcessStep from '@/components/global/ServiceProcessStep'
-import ServiceDeliverablesCard from '@/components/global/ServiceDeliverablesCard'
-import RelatedProjectCard from '@/components/global/RelatedProjectCard'
+import type { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
 
 // ── Icon resolver ────────────────────────────────────────────
 const iconMap: Record<string, LucideIcon> = {

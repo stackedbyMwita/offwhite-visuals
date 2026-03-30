@@ -1,10 +1,10 @@
 'use client'
 
 import {
+  AnimatePresence,
   motion,
   useMotionValue,
   useSpring,
-  AnimatePresence,
 } from 'framer-motion'
 import Image from 'next/image'
 import ServiceCursorButton from '../global/ServiceCursorButton'

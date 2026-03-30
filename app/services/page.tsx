@@ -1,4 +1,4 @@
-import { PageHeader, ServicePageRow, CTABanner } from '@/components/global'
+import { CTABanner, PageHeader, ServicePageRow } from '@/components/global'
 import MaxWidthWrapper from '@/components/layout/MaxWidthWrapper'
 import SectionWrapper from '@/components/layout/SectionWrapper'
 import { services, servicesPage, siteConfig } from '@/data'

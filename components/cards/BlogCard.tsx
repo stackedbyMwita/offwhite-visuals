@@ -1,9 +1,9 @@
+import CustomCard from '@/components/ui/CustomCard'
 import { formatDate, getCategoryColor } from '@/lib/utils'
 import { IBlogPost } from '@/types'
 import { ArrowUpRight, Clock } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import CustomCard from '@/components/ui/CustomCard'
 
 interface BlogCardProps {
   post: IBlogPost

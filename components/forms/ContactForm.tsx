@@ -1,39 +1,29 @@
 'use client'
 
-import { zodResolver } from '@hookform/resolvers/zod'
-import { AnimatePresence, motion } from 'framer-motion'
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
-
 import { contactPage } from '@/data'
 import { cn } from '@/lib/utils'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { AnimatePresence, motion } from 'framer-motion'
 import { AlertCircle, CheckCircle, Send } from 'lucide-react'
-
-// ── Schema ─────────────────────────────────────────────
-const formSchema = z.object({
-  name: z.string().min(2, 'Name is required'),
-  email: z.string().email('Invalid email'),
-  service: z.string().min(1, 'Select a service'),
-  budget: z.string().optional(),
-  message: z.string().min(10, 'Message too short'),
-})
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { formSchema } from '../schemas/ContactSchema'
 
 type FormValues = z.infer<typeof formSchema>
 
-// ── Unified styling ─────────────────────────────────────
+// Unified styling
 const fieldBase =
   'w-full h-11 px-4 rounded-fluid border border-border bg-background text-sm ' +
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-colors'
 
 const textareaBase = cn(fieldBase, 'h-auto min-h-[120px] py-3 resize-none')
 
-// ── WhatsApp builder ───────────────────────────────────
+// WhatsApp builder
 function buildWhatsAppUrl(data: FormValues) {
   const number = contactPage.whatsapp.replace(/\D/g, '')
   const text = encodeURIComponent(
@@ -45,7 +35,7 @@ function buildWhatsAppUrl(data: FormValues) {
   return `https://wa.me/${number}?text=${text}`
 }
 
-// ── Component ─────────────────────────────────────────
+// Component
 export default function ContactForm() {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
 
@@ -183,53 +173,53 @@ export default function ContactForm() {
         {/* Submit */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
           <button
-                    type="submit"
-                    disabled={formState === 'submitting' || formState === 'success'}
-                    className="inline-flex items-center gap-2 px-8 py-3 rounded-full text-sm font-semibold tracking-wide transition-all duration-200 active:scale-[0.97] disabled:opacity-60 disabled:pointer-events-none"
-                    style={{
-                      backgroundColor: 'oklch(0.78 0.14 196)',
-                      color: 'oklch(0.13 0.025 196)',
-                    }}
-                  >
-                    <AnimatePresence mode="wait">
-                      {formState === 'submitting' ? (
-                        <motion.span
-                          key="submitting"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          className="flex items-center gap-2"
-                        >
-                          <motion.div
-                            className="size-4 border-2 border-current border-t-transparent rounded-full"
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 0.8, repeat: Infinity, ease: 'linear' }}
-                          />
-                          Opening WhatsApp...
-                        </motion.span>
-                      ) : formState === 'success' ? (
-                        <motion.span
-                          key="success"
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          className="flex items-center gap-2"
-                        >
-                          <CheckCircle size={16} />
-                          Message Sent!
-                        </motion.span>
-                      ) : (
-                        <motion.span
-                          key="idle"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          className="flex items-center gap-2"
-                        >
-                          <Send size={15} />
-                          Send via WhatsApp
-                        </motion.span>
-                      )}
-                    </AnimatePresence>
-                  </button>
+            type="submit"
+            disabled={formState === 'submitting' || formState === 'success'}
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-full text-sm font-semibold tracking-wide transition-all duration-200 active:scale-[0.97] disabled:opacity-60 disabled:pointer-events-none"
+            style={{
+              backgroundColor: 'oklch(0.78 0.14 196)',
+              color: 'oklch(0.13 0.025 196)',
+            }}
+          >
+            <AnimatePresence mode="wait">
+              {formState === 'submitting' ? (
+                <motion.span
+                  key="submitting"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="flex items-center gap-2"
+                >
+                  <motion.div
+                    className="size-4 border-2 border-current border-t-transparent rounded-full"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 0.8, repeat: Infinity, ease: 'linear' }}
+                  />
+                  Opening WhatsApp...
+                </motion.span>
+              ) : formState === 'success' ? (
+                <motion.span
+                  key="success"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex items-center gap-2"
+                >
+                  <CheckCircle size={16} />
+                  Message Sent!
+                </motion.span>
+              ) : (
+                <motion.span
+                  key="idle"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="flex items-center gap-2"
+                >
+                  <Send size={15} />
+                  Send via WhatsApp
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </button>
 
           <AnimatePresence>
             {formState === 'error' && (
@@ -245,12 +235,10 @@ export default function ContactForm() {
             )}
           </AnimatePresence>
         </div>
-
         <p className="text-xs text-muted-foreground">
           Clicking send opens WhatsApp with your message pre-filled. Your details are never stored or shared.
         </p>
       </form>
     </Form>
-
   )
 }

@@ -9,7 +9,7 @@ import { projects, projectsPage } from '@/data'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 
-// ── All unique categories from data ──────────────────────────
+// All unique categories from data
 const ALL = 'All'
 const categories = [
   ALL,
@@ -28,7 +28,7 @@ export default function ProjectsPage() {
 
   return (
     <>
-      {/* ── Hero ──────────────────────────────────────────── */}
+      {/* Hero */}
       <PageHeader
         eyebrow="Our Work"
         heading={projectsPage.headline}
@@ -70,7 +70,7 @@ export default function ProjectsPage() {
         </div>
       </PageHeader>
 
-      {/* ── Featured projects ─────────────────────────────── */}
+      {/* Featured projects */}
       {featured.length > 0 && (
         <SectionWrapper variant="light" className="flex flex-col">
           <MaxWidthWrapper className="flex flex-col gap-8 py-16">
@@ -95,7 +95,7 @@ export default function ProjectsPage() {
         </SectionWrapper>
       )}
 
-      {/* ── All projects with filter ───────────────────────── */}
+      {/* All projects with filter */}
       <SectionWrapper variant="light" className="flex flex-col">
         <MaxWidthWrapper className="flex flex-col gap-8 pb-28">
 
@@ -111,15 +111,9 @@ export default function ProjectsPage() {
                     whileTap={{ scale: 0.96 }}
                     className="px-4 py-2 rounded-full text-sm font-medium tracking-wide transition-all duration-200 outline-none"
                     style={{
-                      color: isActive
-                        ? 'oklch(0.13 0.025 196)'
-                        : 'oklch(0.50 0.02 196)',
-                      backgroundColor: isActive
-                        ? 'oklch(0.78 0.14 196)'
-                        : 'transparent',
-                      border: isActive
-                        ? '1px solid oklch(0.78 0.14 196)'
-                        : '1px solid oklch(0.90 0.01 196)',
+                      color: isActive ? 'oklch(0.13 0.025 196)' : 'oklch(0.50 0.02 196)',
+                      backgroundColor: isActive ? 'oklch(0.78 0.14 196)' : 'transparent',
+                      border: isActive ? '1px solid oklch(0.78 0.14 196)' : '1px solid oklch(0.90 0.01 196)',
                     }}
                   >
                     {cat}

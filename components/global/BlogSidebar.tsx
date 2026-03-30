@@ -1,19 +1,19 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
 import CustomButton from '@/components/ui/CustomButton'
-import { ArrowLeft } from 'lucide-react'
 import { IBlogPost } from '@/types'
+import { ArrowLeft } from 'lucide-react'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
-import { 
-  XIcon, 
-  InstagramIcon, 
-  LinkedInIcon, 
-  DribbbleIcon, 
-  GitHubIcon, 
-  FacebookIcon 
-} from '@/components/shared';
+import {
+  DribbbleIcon,
+  FacebookIcon,
+  GitHubIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  XIcon
+} from '@/components/shared'
 import { getCategoryColor } from '@/lib/utils'
 
 const IconMap: Record<string, React.FC<{ size?: number; className?: string }>> = {

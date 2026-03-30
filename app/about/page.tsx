@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   description: aboutPage.mission,
 }
 
-// ── Icon resolver ────────────────────────────────────────────
+// Icon resolver
 const iconMap: Record<string, LucideIcon> = {
   Gem, Zap, Handshake, ScanEye, Layers, Globe,
 }
@@ -32,7 +32,7 @@ export default function AboutPage() {
 
   return (
     <>
-      {/* ── Page header ───────────────────────────────────── */}
+      {/* Page header */}
       <PageHeader
         eyebrow="About Us"
         heading={aboutPage.headline}
@@ -41,7 +41,7 @@ export default function AboutPage() {
         align="left"
       />
 
-      {/* ── Story + portrait ──────────────────────────────── */}
+      {/* Story + portrait */}
       <SectionWrapper variant="light" className="flex flex-col">
         <MaxWidthWrapper className="py-20 md:py-28">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-start">
@@ -145,7 +145,7 @@ export default function AboutPage() {
         </MaxWidthWrapper>
       </SectionWrapper>
 
-      {/* ── Approach ──────────────────────────────────────── */}
+      {/* Approach */}
       <SectionWrapper variant="dark" className="flex flex-col">
         <MaxWidthWrapper className="py-20 md:py-28">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -182,7 +182,7 @@ export default function AboutPage() {
         </MaxWidthWrapper>
       </SectionWrapper>
 
-      {/* ── Values ────────────────────────────────────────── */}
+      {/* Values */}
       <SectionWrapper variant="light" className="flex flex-col">
         <MaxWidthWrapper className="py-20 md:py-28">
           <SectionHeader
@@ -225,7 +225,7 @@ export default function AboutPage() {
         </MaxWidthWrapper>
       </SectionWrapper>
 
-      {/* ── Timeline ──────────────────────────────────────── */}
+      {/* Timeline */}
       <SectionWrapper variant="dark" className="flex flex-col">
         <MaxWidthWrapper className="py-20 md:py-28">
           <SectionHeader
@@ -266,11 +266,7 @@ export default function AboutPage() {
                   >
                     <span
                       className="text-[10px] font-black font-mono"
-                      style={{
-                        color: event.highlight
-                          ? 'oklch(0.13 0.025 196)'
-                          : 'oklch(0.97 0.005 196 / 0.5)',
-                      }}
+                      style={{ color: event.highlight ? 'oklch(0.13 0.025 196)' : 'oklch(0.97 0.005 196 / 0.5)' }}
                     >
                       {String(event.year).slice(2)}
                     </span>

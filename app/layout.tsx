@@ -1,7 +1,7 @@
 import { LenisScroll } from "@/components/global";
 import { siteConfig } from "@/data/site.config";
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Outfit, Syne, Fira_Code } from "next/font/google";
+import { Inter, JetBrains_Mono, Outfit, Syne } from "next/font/google";
 import "./globals.css";
 import { Footer, Navbar } from "@/components/layout";
 import FABGroup from "@/components/global/FABGroup";

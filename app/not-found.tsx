@@ -1,12 +1,12 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { Home, ArrowLeft, MessageCircle } from 'lucide-react'
 import CustomButton from '@/components/ui/CustomButton'
 import { siteConfig } from '@/data/site.config'
+import { motion } from 'framer-motion'
+import { ArrowLeft, Home, MessageCircle } from 'lucide-react'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useEffect, useRef } from 'react'
 
 // ── Floating particle
 function Particle({ delay, x, y, size, opacity }: {

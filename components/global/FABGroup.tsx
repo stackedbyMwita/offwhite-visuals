@@ -88,9 +88,9 @@ function Tooltip({ label }: { label: string }) {
 
 // ── Main ─────────────────────────────────────────────────────
 export default function FABGroup() {
-  const [visible, setVisible]       = useState(false)
+  const [visible, setVisible] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
-  const [tooltip, setTooltip]       = useState<'whatsapp' | 'top' | null>(null)
+  const [tooltip, setTooltip] = useState<'whatsapp' | 'top' | null>(null)
 
   const { scrollYProgress } = useScroll()
   useSpring(scrollYProgress, { stiffness: 100, damping: 30 })

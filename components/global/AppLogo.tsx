@@ -1,13 +1,14 @@
 'use client'
 
-import { Zap } from 'lucide-react'
+import { LucideIcon, Zap } from 'lucide-react'
 import Link from 'next/link'
 
 type Props = {
   scrolled: boolean
+  icon?: LucideIcon
 }
 
-export default function AppLogo({ scrolled }: Props) {
+export default function AppLogo({ scrolled, icon: Icon }: Props) {
   const logoTextClass = scrolled ? 'text-foreground' : 'text-white';
   const iconClass = scrolled ? 'text-white' : 'text-foreground';
 
@@ -15,12 +16,21 @@ export default function AppLogo({ scrolled }: Props) {
     <Link href="/" className="relative z-50 group">
       <div className="flex items-center gap-2 transition-all duration-500">
         <span className="bg-primary p-2 rounded-full shadow-lg shadow-primary/10 transition group-hover:scale-105">
-          <Zap 
+          {Icon ? (
+            <Icon 
             className={`transition-colors duration-500 ${iconClass}`} 
             fill="currentColor" 
             size={18} 
-            strokeWidth={0} // Remove stroke for a solid shape
+            strokeWidth={0}
           />
+          ) : (
+            <Zap 
+              className={`transition-colors duration-500 ${iconClass}`} 
+              fill="currentColor" 
+              size={18} 
+              strokeWidth={0}
+            />
+          )}
         </span>
 
         {/* Logo Text - Toggles between Dark Teal and White */}
