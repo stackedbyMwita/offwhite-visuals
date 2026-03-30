@@ -178,14 +178,14 @@ export default function GalleryView({ images, title }: GalleryViewProps) {
             <GalleryColumn
               images={col5}
               direction="up"
-              speed={17}
+              speed={10}
             />
 
             {/* Col 6 — scrolls down (counterlateral) */}
             <GalleryColumn
               images={col6}
               direction="down"
-              speed={15}
+              speed={19}
               className="hidden sm:block"
             />
           </>
