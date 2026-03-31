@@ -2,7 +2,7 @@
 
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { gsap } from 'gsap'
-import { Zap } from 'lucide-react'
+import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
 // ── Deterministic particle positions ────────────────────────
@@ -162,15 +162,12 @@ export default function InteractiveZap() {
             }}
             transition={{ duration: 0.4 }}
           >
-            <Zap
-              size={168}
-              strokeWidth={1.1}
-              style={{
-                color: isHovered
-                  ? 'oklch(0.90 0.12 196)'
-                  : 'oklch(0.97 0.005 196 / 0.08)',
-                transition: 'color 0.3s',
-              }}
+            <Image 
+              src="/assets/brand/icon-light.svg" 
+              alt="Zap Icon"
+              width={80}
+              height={80}
+              style={{ opacity: isHovered ? 1 : 0.2, transition: 'opacity 2s ease'  }}
             />
           </motion.div>
         </div>

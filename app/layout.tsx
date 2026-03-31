@@ -5,6 +5,7 @@ import { Inter, JetBrains_Mono, Outfit, Syne } from "next/font/google";
 import "./globals.css";
 import { Footer, Navbar } from "@/components/layout";
 import FABGroup from "@/components/global/FABGroup";
+import NavbarTwo from "@/components/layout/NavbarTwo";
 
 const fontSans = Outfit({
   subsets: ["latin"],
@@ -48,7 +49,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <LenisScroll />
-        <Navbar/>
+        <NavbarTwo/>
         {children}
         <Footer />
         <FABGroup />
