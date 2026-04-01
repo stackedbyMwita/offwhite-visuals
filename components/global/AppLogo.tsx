@@ -10,18 +10,18 @@ type Props = {
 }
 
 export default function AppLogo({ scrolled, icon: Icon }: Props) {
-  const logoTextClass = scrolled ? 'text-foreground' : 'text-white';
-  const iconClass = scrolled ? 'text-white' : 'text-foreground';
+  const logoSrc = scrolled ? '/assets/brand/logo-dark.svg' : '/assets/brand/logo-light.svg';
 
   return (
     <Link href="/" className="relative z-50 group">
       <Image
-        src={scrolled ? '/assets/brand/logo-dark.svg' : '/assets/brand/logo-light.svg'}
+        src={logoSrc}
         alt="Offwhite Visuals"
         width={160}
         height={32}
         priority
         className="h-8 w-auto transition-opacity duration-300"
+        style={{ width: 'auto', height: '2rem' }}
       />
     </Link>
   )

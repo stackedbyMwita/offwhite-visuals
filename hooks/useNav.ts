@@ -17,7 +17,7 @@ export const useScrollToAnchor = () => {
     }, 400)
     return () => clearTimeout(t)
   }, [pathname])
-}
+  }
 
 export const useNavActions = (onClose?: () => void) => {
   const router = useRouter()

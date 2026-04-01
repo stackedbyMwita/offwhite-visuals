@@ -1,4 +1,4 @@
-import { GalleryView } from '@/components/global'
+import { GalleryView, HorizontalGallery } from '@/components/global'
 import CTABanner from '@/components/global/CTABanner'
 import PageHeader from '@/components/global/PageHeader'
 import RelatedProjectCard from '@/components/global/RelatedProjectCard'
@@ -262,6 +262,11 @@ export default async function ServicePage({
           </MaxWidthWrapper>
         </SectionWrapper>
       )}
+
+      {/* Sits below GalleryView, light background, no wrapper needed */}
+{SERVICE_GALLERIES[service.slug] && (
+  <HorizontalGallery images={SERVICE_GALLERIES[service.slug]} />
+)}
 
       {/* ── Related projects ──────────────────────────────── */}
       {relatedProjects.length > 0 && (

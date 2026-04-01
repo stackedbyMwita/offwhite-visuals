@@ -5,11 +5,11 @@ import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
 
-// ── Pre-computed animation delays — no Math.random() in render
+// ── Pre-computed delays — no Math.random() in render ─────────
 const DELAYS = [
-  '0ms', '100ms', '200ms', '150ms', '250ms',
-  '50ms', '300ms', '75ms', '175ms', '225ms',
-  '125ms', '275ms', '25ms', '350ms', '400ms',
+  '0ms',   '100ms', '200ms', '150ms', '250ms',
+  '50ms',  '300ms', '75ms',  '175ms', '225ms',
+  '125ms', '275ms', '25ms',  '350ms', '400ms',
   '325ms', '375ms', '450ms', '475ms', '500ms',
 ]
 
@@ -20,7 +20,7 @@ function splitArray<T>(array: T[], cols: number): T[][] {
   return result
 }
 
-// ── Single image card ────────────────────────────────────────
+// ── Single image card — natural aspect ratio ─────────────────
 function GalleryCard({
   src,
   alt,
@@ -32,25 +32,33 @@ function GalleryCard({
 }) {
   return (
     <div
-      className="relative w-full overflow-hidden opacity-0 animate-gallery-fade"
+      className="relative w-full overflow-hidden opacity-0 animate-gallery-fade group/card"
       style={{
         animationDelay: DELAYS[delayIndex % DELAYS.length],
         animationFillMode: 'forwards',
       }}
     >
-      <div className="relative w-full aspect-3/4">
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          className="object-cover transition-transform duration-700 hover:scale-105"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-        />
-        {/* Subtle hover overlay */}
-        <div className="absolute inset-0 bg-primary/0 hover:bg-primary/8 transition-colors duration-500" />
-        {/* Top cyan line */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-primary/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
-      </div>
+      {/*
+        width={0} height={0} + style width/height auto
+        tells next/image to render at the image's intrinsic
+        aspect ratio — no forced rectangle, no cropping.
+        Each image takes exactly the height it needs.
+      */}
+      <Image
+        src={src}
+        alt={alt}
+        width={0}
+        height={0}
+        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 16vw"
+        className="w-full h-auto object-contain transition-transform duration-700 group-hover/card:scale-[1.03]"
+        unoptimized={false}
+      />
+
+      {/* Hover overlay */}
+      <div className="absolute inset-0 bg-primary/0 group-hover/card:bg-primary/6 transition-colors duration-500 pointer-events-none" />
+
+      {/* Top cyan edge on hover */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/70 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none" />
     </div>
   )
 }
@@ -59,7 +67,7 @@ function GalleryCard({
 function GalleryColumn({
   images,
   direction = 'up',
-  speed = 50,
+  speed = 15,
   className,
 }: {
   images: string[]
@@ -68,36 +76,45 @@ function GalleryColumn({
   className?: string
 }) {
   const ref = useRef<HTMLDivElement>(null)
-  const [height, setHeight] = useState(0)
+  const [colHeight, setColHeight] = useState(0)
 
   useEffect(() => {
     const el = ref.current
     if (!el) return
-    const ro = new ResizeObserver(() => setHeight(el.offsetHeight))
+
+    // Measure after images have a chance to load
+    const measure = () => setColHeight(el.scrollHeight)
+    measure()
+
+    const ro = new ResizeObserver(measure)
     ro.observe(el)
     return () => ro.disconnect()
-  }, [])
+  }, [images])
 
-  // Duration = height × ms per pixel
-  const duration = height * speed
+  // Duration based on height so all columns scroll at
+  // the same pixels-per-second regardless of total height
+  const duration = Math.max(colHeight * speed, 8000)
 
   return (
     <div className={cn('relative overflow-hidden', className)}>
       <div
         ref={ref}
-        className="flex flex-col gap-4"
+        className="flex flex-col gap-3"
         style={{
-          animation: `gallery-scroll-${direction} ${duration}ms linear infinite`,
+          animation:
+            colHeight > 0
+              ? `gallery-scroll-${direction} ${duration}ms linear infinite`
+              : 'none',
           willChange: 'transform',
         }}
       >
-        {/* Duplicate for seamless loop */}
+        {/* Original + duplicate for seamless loop */}
         {[...images, ...images].map((src, i) => (
           <GalleryCard
             key={`${src}-${i}`}
             src={src}
-            alt={`Gallery image ${i + 1}`}
-            delayIndex={i}
+            alt={`Gallery image ${(i % images.length) + 1}`}
+            delayIndex={i % DELAYS.length}
           />
         ))}
       </div>
@@ -113,14 +130,14 @@ interface GalleryViewProps {
 
 export default function GalleryView({ images, title }: GalleryViewProps) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const isInView = useInView(containerRef, { once: true, amount: 0.15 })
+  const isInView = useInView(containerRef, { once: true, amount: 0.1 })
 
-  // Split into 4 columns — 2 on tablet, 1 on mobile
   const [col1, col2, col3, col4, col5, col6] = splitArray(images, 6)
 
   return (
     <div ref={containerRef} className="w-full flex flex-col gap-6">
-      {/* Label */}
+
+      {/* Section label */}
       {title && (
         <div className="flex items-center gap-3">
           <span
@@ -136,79 +153,37 @@ export default function GalleryView({ images, title }: GalleryViewProps) {
         </div>
       )}
 
-      {/* Grid — 3/4 screen height */}
+      {/* Gallery grid — 75vh fixed height, columns scroll internally */}
       <div
-        className="relative grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4 overflow-hidden"
+        className="relative grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3 overflow-hidden"
         style={{ height: '75vh' }}
       >
-        {isInView ? (
+        {isInView && (
           <>
-            {/* Col 1 — scrolls up */}
-            <GalleryColumn
-              images={col1}
-              direction="up"
-              speed={17}
-            />
-
-            {/* Col 2 — scrolls down (counterlateral) */}
-            <GalleryColumn
-              images={col2}
-              direction="down"
-              speed={15}
-              className="hidden sm:block"
-            />
-
-            {/* Col 3 — scrolls up, faster */}
-            <GalleryColumn
-              images={col3}
-              direction="up"
-              speed={12}
-              className="hidden lg:block"
-            />
-
-            {/* Col 4 — scrolls down */}
-            <GalleryColumn
-              images={col4}
-              direction="down"
-              speed={16}
-              className="hidden lg:block"
-            />
-
-            {/* Col 5 — scrolls up */}
-            <GalleryColumn
-              images={col5}
-              direction="up"
-              speed={10}
-            />
-
-            {/* Col 6 — scrolls down (counterlateral) */}
-            <GalleryColumn
-              images={col6}
-              direction="down"
-              speed={19}
-              className="hidden sm:block"
-            />
+            <GalleryColumn images={col1} direction="up"   speed={17} />
+            <GalleryColumn images={col2} direction="down" speed={15} className="hidden sm:block" />
+            <GalleryColumn images={col3} direction="up"   speed={12} className="hidden lg:block" />
+            <GalleryColumn images={col4} direction="down" speed={16} className="hidden lg:block" />
+            <GalleryColumn images={col5} direction="up"   speed={10} />
+            <GalleryColumn images={col6} direction="down" speed={19} className="hidden sm:block" />
           </>
-        ) : null}
+        )}
 
-        {/* Top + bottom gradient fades */}
+        {/* Top fade */}
         <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-24 z-10"
+          className="pointer-events-none absolute inset-x-0 top-0 h-28 z-10"
           style={{
-            background: 'linear-gradient(to bottom, var(--dark-bg), transparent)',
-          }}
-        />
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-24 z-10"
-          style={{
-            background: 'linear-gradient(to top, var(--dark-bg), transparent)',
+            background: 'linear-gradient(to bottom, var(--dark-bg) 0%, transparent 100%)',
           }}
         />
 
-        {/* Pause on hover overlay */}
-        <div className="absolute inset-0 z-20 group">
-          <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/3 transition-colors duration-500" />
-        </div>
+        {/* Bottom fade */}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-28 z-10"
+          style={{
+            background: 'linear-gradient(to top, var(--dark-bg) 0%, transparent 100%)',
+          }}
+        />
       </div>
     </div>
   )
