@@ -93,6 +93,9 @@ importers:
       '@types/gsap':
         specifier: ^1.20.2
         version: 1.20.2
+      '@types/mdx':
+        specifier: ^2.0.13
+        version: 2.0.13
       '@types/node':
         specifier: ^20
         version: 20.19.37

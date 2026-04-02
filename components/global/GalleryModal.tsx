@@ -7,9 +7,9 @@ import {
   DialogOverlay,
   DialogTitle,
 } from '@/components/ui/dialog'
+import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import Image from 'next/image'
-import { useEffect, useCallback } from 'react'
-import { X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useCallback, useEffect } from 'react'
 
 interface GalleryModalProps {
   images: string[]
