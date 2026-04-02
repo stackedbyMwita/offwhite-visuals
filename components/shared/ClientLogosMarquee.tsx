@@ -21,7 +21,7 @@ export default function ClientLogosMarquee({
         speed={speed}
         pauseOnHover
       >
-        <div className="flex items-center gap-32">
+        <div className="flex items-center gap-24">
           {logos.map((logo, i) => (
             <div
               key={i}

@@ -246,7 +246,7 @@ export default async function ServicePage({
 
       {/* ── Work Gallery ──────────────────────────────────── */}
       {SERVICE_GALLERIES[service.slug] && (
-        <SectionWrapper variant="dark" className="flex flex-col">
+        <SectionWrapper variant="light" className="flex flex-col">
           <MaxWidthWrapper className="py-20 md:py-28">
             <SectionHeader
               eyebrow="Our Work"
@@ -255,18 +255,10 @@ export default async function ServicePage({
               align="left"
               className="mb-12"
             />
-            <GalleryView
-              images={SERVICE_GALLERIES[service.slug]}
-              title={`${service.title} Gallery`}
-            />
+            <HorizontalGallery images={SERVICE_GALLERIES[service.slug]} />
           </MaxWidthWrapper>
         </SectionWrapper>
       )}
-
-      {/* Sits below GalleryView, light background, no wrapper needed */}
-{SERVICE_GALLERIES[service.slug] && (
-  <HorizontalGallery images={SERVICE_GALLERIES[service.slug]} />
-)}
 
       {/* ── Related projects ──────────────────────────────── */}
       {relatedProjects.length > 0 && (

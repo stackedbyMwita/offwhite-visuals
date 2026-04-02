@@ -87,7 +87,7 @@ export default function GalleryModal({
         "
         style={{ maxWidth: '92vw', maxHeight: '92vh' }}
       >
-        <DialogTitle>Image preview</DialogTitle>
+        <DialogTitle className="sr-only">Image preview</DialogTitle>
         <DialogDescription className="sr-only">
           {selectedImage ? `Viewing ${getCaption(selectedImage)}` : 'Image preview dialog'}
         </DialogDescription>
@@ -95,7 +95,7 @@ export default function GalleryModal({
         <button
           onClick={onClose}
           aria-label="Close"
-          className="absolute top-4 right-4 z-50 flex items-center justify-center size-9 rounded-full transition-all duration-200"
+          className="absolute top-4 right-4 z-50 flex items-center justify-center size-9 rounded-fluid transition-all duration-200"
           style={{
             backgroundColor: 'rgba(0,0,0,0.6)',
             color: 'rgba(255,255,255,0.85)',
@@ -113,7 +113,7 @@ export default function GalleryModal({
             onClick={goPrev}
             disabled={!hasPrev}
             aria-label="Previous image"
-            className="flex items-center justify-center size-11 rounded-full transition-all duration-200 disabled:opacity-20 disabled:pointer-events-none shrink-0"
+            className="flex items-center justify-center size-11 rounded-fluid transition-all duration-200 disabled:opacity-20 disabled:pointer-events-none shrink-0"
             style={{
               backgroundColor: 'rgba(0,0,0,0.55)',
               color: 'rgba(255,255,255,0.85)',
@@ -135,7 +135,7 @@ export default function GalleryModal({
                 width={0}
                 height={0}
                 sizes="80vw"
-                className="w-auto h-auto rounded-xl shadow-2xl shadow-black/60"
+                className="w-auto h-auto shadow-2xl shadow-black/60"
                 style={{ maxWidth: '80vw', maxHeight: '80vh' }}
                 unoptimized={false}
               />
@@ -147,7 +147,7 @@ export default function GalleryModal({
             onClick={goNext}
             disabled={!hasNext}
             aria-label="Next image"
-            className="flex items-center justify-center size-11 rounded-full transition-all duration-200 disabled:opacity-20 disabled:pointer-events-none shrink-0"
+            className="flex items-center justify-center size-11 rounded-fluid transition-all duration-200 disabled:opacity-20 disabled:pointer-events-none shrink-0"
             style={{
               backgroundColor: 'rgba(0,0,0,0.55)',
               color: 'rgba(255,255,255,0.85)',

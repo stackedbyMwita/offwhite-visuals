@@ -1,3 +1,12 @@
+import { ProjectCard } from '@/components/cards'
+import CTABanner from '@/components/global/CTABanner'
+import PageHeader from '@/components/global/PageHeader'
+import MaxWidthWrapper from '@/components/layout/MaxWidthWrapper'
+import SectionWrapper from '@/components/layout/SectionWrapper'
+import CustomButton from '@/components/ui/CustomButton'
+import { projects } from '@/data/projects.data'
+import { services } from '@/data/services.data'
+import { siteConfig } from '@/data/site.config'
 import {
   ArrowLeft,
   ArrowUpRight,
@@ -12,23 +21,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { projects } from '@/data/projects.data'
-import { services } from '@/data/services.data'
-import { siteConfig } from '@/data/site.config'
-
-import { ProjectCard } from '@/components/cards'
-import CTABanner from '@/components/global/CTABanner'
-import PageHeader from '@/components/global/PageHeader'
-import MaxWidthWrapper from '@/components/layout/MaxWidthWrapper'
-import SectionWrapper from '@/components/layout/SectionWrapper'
-import CustomButton from '@/components/ui/CustomButton'
-
-// ── Static params ────────────────────────────────────────────
+// Static params
 export async function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }))
 }
 
-// ── Metadata ─────────────────────────────────────────────────
+// Metadata
 export async function generateMetadata({
   params,
 }: {
